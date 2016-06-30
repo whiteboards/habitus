@@ -30,7 +30,10 @@ defmodule Habitus.Mixfile do
   #
   # Type `mix help deps` for examples and options.
   defp deps do
-    [{:phoenix, "~> 1.2.0"},
+    [{:comeonin, "~> 2.5"},
+     {:corsica, "~> 0.4"},
+     {:ja_serializer, "~> 0.9.0"},
+     {:phoenix, "~> 1.2.0"},
      {:phoenix_pubsub, "~> 1.0"},
      {:phoenix_ecto, "~> 3.0"},
      {:mariaex, ">= 0.0.0"},
