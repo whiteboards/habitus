@@ -1,0 +1,19 @@
+{{outlet}}
+<h1 class='title is-1'>List of pages {{#link-to 'admin.pages.new' class="button is-primary"}}
+  Add New
+{{/link-to}}</h1>
+
+{{#each model as |page|}}
+  {{#content-card
+  isEmpty=false
+  title=page.title}}
+  <p>At some point, we'll have a bit from the page here..</p>
+  {{/content-card}}
+  
+{{else}}
+  {{#content-card
+  isEmpty=true
+  title='No Existing Pages'}}
+    <p>Since you don't have any existing pages, you'll need to create one to get started.</p>
+  {{/content-card}}  
+{{/each}}
