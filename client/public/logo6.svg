@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg id="svg2" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" height="153.69mm" width="153.69mm" version="1.1" xmlns:cc="http://creativecommons.org/ns#" viewBox="0 0 544.57599 544.57599" xmlns:dc="http://purl.org/dc/elements/1.1/">
+ <defs id="defs4">
+  <filter id="filter7241" style="color-interpolation-filters:sRGB" height="1.072" width="1.072" y="-.036" x="-.036">
+   <feGaussianBlur id="feGaussianBlur7243" stdDeviation="7.6199991"/>
+  </filter>
+ </defs>
+ <metadata id="metadata7">
+  <rdf:RDF>
+   <cc:Work rdf:about="">
+    <dc:format>image/svg+xml</dc:format>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:title/>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <g id="layer1" transform="translate(-72.441 31.889)">
+  <circle id="path6906-2" cx="344.73" filter="url(#filter7241)" cy="240.4" r="254"/>
+  <circle id="path6906" cx="344.6" cy="240.52" r="254" fill="#b1e9d5"/>
+  <path id="path6402-5" fill="#40806a" d="m233.4 67.49v10.112 1.1254 342.53h44.671v-153c0-26.426 6.9239-47.295 20.769-62.603s32.761-22.962 56.748-22.962c19.962 0 34.932 6.3661 44.913 19.096s14.973 31.905 14.973 57.526v161.94h44.433v-163.39c0-37.384-7.9717-65.664-23.909-84.84-15.937-19.336-39.439-29.003-70.509-29.003-18.835 0-35.497 4.0274-49.986 12.084-14.328 8.0569-26.806 20.221-37.43 36.495v-147.44h-5.9767l0.0856 0.14751-38.689 22.336-0.0904-0.15702z"/>
+ </g>
+</svg>

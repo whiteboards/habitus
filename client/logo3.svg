@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:osb="http://www.openswatchbook.org/uri/2009/osb"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="141.12993mm"
+   height="141.29131mm"
+   viewBox="0 0 500.06666 500.63847"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r"
+   sodipodi:docname="logo3.svg"
+   inkscape:export-filename="/home/nathan/Projects/ember-test/public/logo3.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
+  <defs
+     id="defs4">
+    <linearGradient
+       id="linearGradient5671"
+       osb:paint="solid">
+      <stop
+         style="stop-color:#f5f7fa;stop-opacity:1;"
+         offset="0"
+         id="stop5673" />
+    </linearGradient>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter6053"
+       x="-0.12367345"
+       width="1.2473469"
+       y="-0.12352663"
+       height="1.2470533">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="22.782963"
+         id="feGaussianBlur6055" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.3293607"
+     inkscape:cx="185.07558"
+     inkscape:cy="303.0617"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1600"
+     inkscape:window-height="848"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-125.99935,-5.2391884)">
+    <path
+       style="fill:#000000;fill-opacity:1;stroke:none;stroke-opacity:1;filter:url(#filter6053)"
+       d="m 150.944,11.580403 0,442.650377 379.03021,0 63.09467,-66.40642 0,-376.243957 z"
+       id="rect4140-6"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"
+       inkscape:export-filename="/home/nathan/Projects/ember-test/public/logo3.png"
+       sodipodi:nodetypes="cccccc"
+       transform="matrix(0.88546775,0,0,0.88546775,44.606732,38.675201)" />
+    <path
+       style="fill:#b1e9d5;fill-opacity:1;stroke:none;stroke-opacity:1"
+       d="m 163.65397,23.099218 0,418.578712 358.41825,0 59.66354,-62.79519 0,-355.783522 z"
+       id="rect4140"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"
+       inkscape:export-filename="/home/nathan/Projects/ember-test/public/logo3.png"
+       sodipodi:nodetypes="cccccc" />
+    <path
+       style="fill:#40806a;fill-opacity:1;stroke:none;stroke-opacity:1"
+       d="m 524.09644,440.65964 58.06722,-62.1805 -58.17815,-0.0594 z"
+       id="path4159"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccc"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"
+       inkscape:export-filename="/home/nathan/Projects/ember-test/public/logo3.png" />
+    <path
+       style="font-style:normal;font-weight:normal;font-size:485.26605225px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#40806a;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 275.93581,79.21231 0,282.1076 36.6711,0 0,-125.59812 c 0,-21.69344 5.68377,-38.82336 17.0488,-51.3897 11.36502,-12.56631 26.89219,-18.84934 46.58274,-18.84934 16.38678,0 28.67707,5.22492 36.87045,15.67481 8.1934,10.4499 12.2907,26.19195 12.2907,47.22401 l 0,132.93834 36.47339,0 0,-134.12902 c 0,-30.68827 -6.54258,-53.90271 -19.62557,-69.64371 -13.08298,-15.87324 -32.3764,-23.80989 -57.88161,-23.80989 -15.46173,0 -29.14018,3.30721 -41.03381,9.92106 -11.76146,6.61386 -22.00311,16.59948 -30.72509,29.95946 l 0,-121.033406 -9.87569,0 0.39378,0.394162 -26.69901,26.724404 -0.49018,-0.49066 z"
+       id="path4167"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"
+       inkscape:export-filename="/home/nathan/Projects/ember-test/public/logo3.png" />
+    <path
+       style="font-style:normal;font-weight:normal;font-size:485.26605225px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#85debf;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 303.125,53.075136 -0.49018,-0.490663 -26.69901,26.724407 0.39378,0.39416 26.79541,0 0,-26.627904 z"
+       id="text3336"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"
+       inkscape:export-filename="/home/nathan/Projects/ember-test/public/logo3.png" />
+  </g>
+</svg>
