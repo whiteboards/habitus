@@ -35,6 +35,7 @@ defmodule Habitus.Endpoint do
     store: :cookie,
     key: "_habitus_key",
     signing_salt: "hiw2GkH+"
-
+  
+  plug Corsica, origins: "*"
   plug Habitus.Router
 end
