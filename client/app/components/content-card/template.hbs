@@ -1,0 +1,26 @@
+<div class="card is-fullwidth">
+  <header class="card-header">
+    <p class="card-header-title">
+      {{title}}
+    </p>
+    <a class="card-header-icon">
+      <i class="fa fa-angle-down"></i>
+    </a>
+  </header>
+  <div class="card-content">
+    <div class="content">
+      {{yield}}
+    </div>
+  </div>
+  <footer class="card-footer">
+    {{#if notEmpty}}
+      <a class="card-footer-item">View</a>
+      <a class="card-footer-item">Edit</a>
+      <a class="card-footer-item">Delete</a>
+    {{else}}
+      {{#link-to 'admin.pages' class="card-footer-item button is-primary"}}
+        New
+      {{/link-to}}
+    {{/if}}
+  </footer>
+</div>

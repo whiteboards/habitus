@@ -1,0 +1,50 @@
+<section class="section">
+    <div class="container-fluid">
+      <div class="columns">
+        <div class='column is-one-quarter'>
+          <aside class="menu  menu__panel">
+            <p class="menu-label">
+              General *TODO* make into component
+            </p>
+            <ul class="menu-list">
+              <li><a class='is-active' href="#">Dashboard</a></li>
+            </ul>
+            <p class="menu-label">
+              Site Management
+            </p>
+            <ul class="menu-list">
+              <li><a href="#">Pages</a>
+                <ul>
+                  <li><a href="#">Add New Page</a></li>
+                  <li>
+                  {{#link-to 'admin.pages' class="nav-item"}}
+                    View Pages
+                  {{/link-to}}
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="#">Blog</a>
+                <ul>
+                  <li><a href="#">Add New Post</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Settings</a></li>
+              <li><a href="#">Users</a></li>
+            </ul>
+            <p class="menu-label">
+              Other
+            </p>
+            <ul class="menu-list">
+              <li><a href="#">Make a backup</a></li>
+              <li><a href="#">Style Editor</a></li>
+              <li><a href="#">Feature?</a></li>
+            </ul>
+          </aside>
+        </div>
+        <div class='column is-two-quarter'>
+          {{outlet}}
+        </div>
+      </div>
+    </div>
+</section>  
