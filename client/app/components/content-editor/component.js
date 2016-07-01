@@ -11,9 +11,9 @@ export default Ember.Component.extend({
     return this.get('title').replace(/[^a-zA-Z0-9-_]/g, '-').toLowerCase()
   }),
   actions: {
-    submitPage() {
+    savePage() {
       // trigger action on parent component
-      this.set('confirmShown', false);
+      this.sendAction('savePage', true);
     },
   } 
 });

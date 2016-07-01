@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.Route.extend({
   actions: {
     savePage() {
-      let page = store.createRecord('page', {
+      let page = this.store.createRecord('page', {
         content: this.get('content'),
         title: this.get('title')
       })
