@@ -1,17 +1,11 @@
 defmodule Habitus.TagView do
   use Habitus.Web, :view
+  use JaSerializer.PhoenixView
 
-  def render("index.json", %{tags: tags}) do
-    %{data: render_many(tags, Habitus.TagView, "tag.json")}
-  end
+  attributes [:content, :inserted_at, :updated_at]
+  
+  has_one :page,
+    field: :page_id,
+    type: "page"
 
-  def render("show.json", %{tag: tag}) do
-    %{data: render_one(tag, Habitus.TagView, "tag.json")}
-  end
-
-  def render("tag.json", %{tag: tag}) do
-    %{id: tag.id,
-      content: tag.content,
-      page: tag.page}
-  end
 end

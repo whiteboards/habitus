@@ -3,12 +3,11 @@ defmodule Habitus.Repo.Migrations.CreateUser do
 
   def change do
     create table(:users) do
-      add :displayName, :string
-      add :firstName, :string
-      add :lastName, :string
+      add :display_name, :string
+      add :first_name, :string
+      add :last_name, :string
+      add :encrypted_password, :string
       add :email, :string
-      add :encryptedPassword, :string
-      add :role, :string
 
       timestamps()
     end

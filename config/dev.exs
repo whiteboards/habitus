@@ -7,7 +7,7 @@ use Mix.Config
 # watchers to your application. For example, we use it
 # with brunch.io to recompile .js and .css sources.
 config :habitus, Habitus.Endpoint,
-  http: [port: 8080],
+  http: [port: 4000],
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
@@ -24,8 +24,8 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :habitus, Habitus.Repo,
   adapter: Ecto.Adapters.MySQL,
-  username: System.get_env("DB_USER"),
-  password: System.get_env("DB_PASSWORD"),
-  database: System.get_env("DB_NAME"),
-  hostname: System.get_env("DB_HOST"),
+  username: "root",
+  password: "",
+  database: "habitus_dev",
+  hostname: "localhost",
   pool_size: 10

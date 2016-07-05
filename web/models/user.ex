@@ -2,12 +2,12 @@ defmodule Habitus.User do
   use Habitus.Web, :model
 
   schema "users" do
-    field :displayName, :string
-    field :firstName, :string
-    field :lastName, :string
+    field :display_name, :string
+    field :first_name, :string
+    field :last_name, :string
+    field :encrypted_password, :string
     field :email, :string
-    field :encryptedPassword, :string
-    field :role, :string
+    has_many :comments, Habitus.Comment
 
     timestamps()
   end
@@ -17,7 +17,7 @@ defmodule Habitus.User do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:displayName, :firstName, :lastName, :email, :encryptedPassword, :role])
-    |> validate_required([:displayName, :firstName, :lastName, :email, :encryptedPassword, :role])
+    |> cast(params, [:display_name, :first_name, :last_name, :encrypted_password, :email])
+    |> validate_required([:display_name, :first_name, :last_name, :encrypted_password, :email])
   end
 end

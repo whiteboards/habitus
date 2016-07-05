@@ -1,25 +1,25 @@
-defmodule Habitus.PageController do
+defmodule Habitus.PostController do
   use Habitus.Web, :controller
 
-  alias Habitus.Page
+  alias Habitus.Post
   alias JaSerializer.Params
 
   plug :scrub_params, "data" when action in [:create, :update]
 
   def index(conn, _params) do
-    pages = Repo.all(Page)
-    render(conn, "index.json", data: pages)
+    posts = Repo.all(Post)
+    render(conn, "index.json", data: posts)
   end
 
-  def create(conn, %{"data" => data = %{"type" => "page", "attributes" => _page_params}}) do
-    changeset = Page.changeset(%Page{}, Params.to_attributes(data))
+  def create(conn, %{"data" => data = %{"type" => "post", "attributes" => _post_params}}) do
+    changeset = Post.changeset(%Post{}, Params.to_attributes(data))
 
     case Repo.insert(changeset) do
-      {:ok, page} ->
+      {:ok, post} ->
         conn
         |> put_status(:created)
-        |> put_resp_header("location", page_path(conn, :show, page))
-        |> render("show.json", data: page)
+        |> put_resp_header("location", post_path(conn, :show, post))
+        |> render("show.json", data: post)
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
@@ -28,17 +28,17 @@ defmodule Habitus.PageController do
   end
 
   def show(conn, %{"id" => id}) do
-    page = Repo.get!(Page, id)
-    render(conn, "show.json", data: page)
+    post = Repo.get!(Post, id)
+    render(conn, "show.json", data: post)
   end
 
-  def update(conn, %{"id" => id, "data" => data = %{"type" => "page", "attributes" => _page_params}}) do
-    page = Repo.get!(Page, id)
-    changeset = Page.changeset(page, Params.to_attributes(data))
+  def update(conn, %{"id" => id, "data" => data = %{"type" => "post", "attributes" => _post_params}}) do
+    post = Repo.get!(Post, id)
+    changeset = Post.changeset(post, Params.to_attributes(data))
 
     case Repo.update(changeset) do
-      {:ok, page} ->
-        render(conn, "show.json", data: page)
+      {:ok, post} ->
+        render(conn, "show.json", data: post)
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
@@ -47,11 +47,11 @@ defmodule Habitus.PageController do
   end
 
   def delete(conn, %{"id" => id}) do
-    page = Repo.get!(Page, id)
+    post = Repo.get!(Post, id)
 
     # Here we use delete! (with a bang) because we expect
     # it to always work (and if it does not, it will raise).
-    Repo.delete!(page)
+    Repo.delete!(post)
 
     send_resp(conn, :no_content, "")
   end

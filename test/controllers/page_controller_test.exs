@@ -2,11 +2,30 @@ defmodule Habitus.PageControllerTest do
   use Habitus.ConnCase
 
   alias Habitus.Page
+  alias Habitus.Repo
+
   @valid_attrs %{content: "some content", title: "some content"}
   @invalid_attrs %{}
 
-  setup %{conn: conn} do
-    {:ok, conn: put_req_header(conn, "accept", "application/json")}
+  setup do
+    conn = conn()
+      |> put_req_header("accept", "application/vnd.api+json")
+      |> put_req_header("content-type", "application/vnd.api+json")
+
+    {:ok, conn: conn}
+  end
+  
+  defp relationships do 
+    user = Repo.insert!(%Habitus.User{})
+
+    %{
+      "user" => %{
+        "data" => %{
+          "type" => "user",
+          "id" => user.id
+        }
+      },
+    }
   end
 
   test "lists all entries on index", %{conn: conn} do
@@ -17,39 +36,75 @@ defmodule Habitus.PageControllerTest do
   test "shows chosen resource", %{conn: conn} do
     page = Repo.insert! %Page{}
     conn = get conn, page_path(conn, :show, page)
-    assert json_response(conn, 200)["data"] == %{"id" => page.id,
-      "title" => page.title,
-      "content" => page.content,
-      "user_id" => page.user_id}
+    data = json_response(conn, 200)["data"]
+    assert data["id"] == "#{page.id}"
+    assert data["type"] == "page"
+    assert data["attributes"]["title"] == page.title
+    assert data["attributes"]["content"] == page.content
+    assert data["attributes"]["user_id"] == page.user_id
   end
 
-  test "renders page not found when id is nonexistent", %{conn: conn} do
+  test "does not show resource and instead throw error when id is nonexistent", %{conn: conn} do
     assert_error_sent 404, fn ->
       get conn, page_path(conn, :show, -1)
     end
   end
 
   test "creates and renders resource when data is valid", %{conn: conn} do
-    conn = post conn, page_path(conn, :create), page: @valid_attrs
+    conn = post conn, page_path(conn, :create), %{
+      "meta" => %{},
+      "data" => %{
+        "type" => "page",
+        "attributes" => @valid_attrs,
+        "relationships" => relationships
+      }
+    }
+
     assert json_response(conn, 201)["data"]["id"]
     assert Repo.get_by(Page, @valid_attrs)
   end
 
   test "does not create resource and renders errors when data is invalid", %{conn: conn} do
-    conn = post conn, page_path(conn, :create), page: @invalid_attrs
+    conn = post conn, page_path(conn, :create), %{
+      "meta" => %{},
+      "data" => %{
+        "type" => "page",
+        "attributes" => @invalid_attrs,
+        "relationships" => relationships
+      }
+    }
+
     assert json_response(conn, 422)["errors"] != %{}
   end
 
   test "updates and renders chosen resource when data is valid", %{conn: conn} do
     page = Repo.insert! %Page{}
-    conn = put conn, page_path(conn, :update, page), page: @valid_attrs
+    conn = put conn, page_path(conn, :update, page), %{
+      "meta" => %{},
+      "data" => %{
+        "type" => "page",
+        "id" => page.id,
+        "attributes" => @valid_attrs,
+        "relationships" => relationships
+      }
+    }
+
     assert json_response(conn, 200)["data"]["id"]
     assert Repo.get_by(Page, @valid_attrs)
   end
 
   test "does not update chosen resource and renders errors when data is invalid", %{conn: conn} do
     page = Repo.insert! %Page{}
-    conn = put conn, page_path(conn, :update, page), page: @invalid_attrs
+    conn = put conn, page_path(conn, :update, page), %{
+      "meta" => %{},
+      "data" => %{
+        "type" => "page",
+        "id" => page.id,
+        "attributes" => @invalid_attrs,
+        "relationships" => relationships
+      }
+    }
+
     assert json_response(conn, 422)["errors"] != %{}
   end
 
@@ -59,4 +114,5 @@ defmodule Habitus.PageControllerTest do
     assert response(conn, 204)
     refute Repo.get(Page, page.id)
   end
+
 end
