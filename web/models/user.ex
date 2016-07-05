@@ -7,7 +7,6 @@ defmodule Habitus.User do
     field :last_name, :string
     field :encrypted_password, :string
     field :email, :string
-    has_many :comments, Habitus.Comment
 
     timestamps()
   end

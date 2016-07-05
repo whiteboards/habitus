@@ -4,9 +4,5 @@ defmodule Habitus.UserView do
 
   attributes [:display_name, :first_name, :last_name, :encrypted_password, :email, :inserted_at, :updated_at]
   
-  has_many :comment,
-    field: :comments,
-    type: "comment"
-  
 
 end

@@ -16,6 +16,10 @@ config :habitus, Habitus.Endpoint,
   render_errors: [view: Habitus.ErrorView, accepts: ~w(json)],
   pubsub: [name: Habitus.PubSub,
            adapter: Phoenix.PubSub.PG2]
+           
+config :plug, :mimes, %{
+  "application/vnd.api+json" => ["json-api"]
+}
 
 # Configures Elixir's Logger
 config :logger, :console,
