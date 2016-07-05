@@ -4,14 +4,20 @@ defmodule Habitus.Router do
   pipeline :api do
     plug :accepts, ["json","json-api"]
   end
+  
+  pipeline :auth do
+    plug Guardian.Plug.VerifyHeader, realm: "Bearer"
+    plug Guardian.Plug.LoadResource
+    plug JaSerializer.ContentTypeNegotiation
+    plug JaSerializer.Deserializer
+  end
 
   scope "/api/v1", Habitus do
     pipe_through :api
     post "/register", RegistrationController, :create
-    # Route stuff to our SessionController
-    #resources "/token", SessionController, only: [:index]
     post "/token", SessionController, :create, as: :login
     
+    pipe_through :auth
     resources "/users", UserController, except: [:new, :edit]
     resources "/posts", PostController, except: [:new, :edit]
     resources "/pages", PageController, except: [:new, :edit]

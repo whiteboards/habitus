@@ -3,7 +3,7 @@ defmodule Habitus.PageController do
 
   alias Habitus.Page
   alias JaSerializer.Params
-
+  plug Guardian.Plug.EnsureAuthenticated, handler: Habitus.AuthErrorHandler
   plug :scrub_params, "data" when action in [:create, :update]
 
   def index(conn, _params) do
