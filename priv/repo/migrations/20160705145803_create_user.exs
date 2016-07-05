@@ -6,8 +6,8 @@ defmodule Habitus.Repo.Migrations.CreateUser do
       add :display_name, :string
       add :first_name, :string
       add :last_name, :string
-      add :encrypted_password, :string
       add :email, :string
+      add :password_hash, :string
 
       timestamps()
     end

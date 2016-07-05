@@ -5,18 +5,33 @@ defmodule Habitus.User do
     field :display_name, :string
     field :first_name, :string
     field :last_name, :string
-    field :encrypted_password, :string
     field :email, :string
+    field :password_hash, :string
+    field :password, :string, virtual: true
+    field :password_confirmation, :string, virtual: true
 
     timestamps()
   end
+  
+  @required_fields ~w(display_name email password password_confirmation)
+  @optional_fields ~w(first_name last_name)
 
   @doc """
   Builds a changeset based on the `struct` and `params`.
   """
-  def changeset(struct, params \\ %{}) do
-    struct
-    |> cast(params, [:display_name, :first_name, :last_name, :encrypted_password, :email])
-    |> validate_required([:display_name, :first_name, :last_name, :encrypted_password, :email])
+  def changeset(data, params \\ :empty) do
+    data
+    |> cast(params, @required_fields, @optional_fields)
+    |> validate_format(:email, ~r/@/)
+    |> validate_length(:password, min: 8)
+    |> validate_confirmation(:password)
+    |> hash_password
+    |> unique_constraint(:email) 
+  end
+  
+  defp hash_password(%{valid?: false} = changeset), do: changeset
+  defp hash_password(%{valid?: true} = changeset) do
+      hashedpw = Comeonin.Bcrypt.hashpwsalt(Ecto.Changeset.get_field(changeset, :password))
+      Ecto.Changeset.put_change(changeset, :password_hash, hashedpw)
   end
 end
