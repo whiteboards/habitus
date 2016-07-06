@@ -2,18 +2,18 @@ import Ember from 'ember';
 import marked from 'npm:marked'
 
 export default Ember.Component.extend({
-  content: '',
-  title: '',
-  previewContent: Ember.computed('content', function () {
-    return marked(this.get('content'))
+  previewContent: Ember.computed('model.{content}', function () {
+    if (this.get('model.content') === undefined) {return ''}
+    return marked(this.get('model.content'))
   }), 
-  alias: Ember.computed('title', function () {
-    return this.get('title').replace(/[^a-zA-Z0-9-_]/g, '-').toLowerCase()
-  }),
+  alias:Ember.computed('model.{alias}', function () {
+    if (this.get('model.alias') === 'undefined') {return ''}
+    return this.get('model.alias')
+  }), 
   actions: {
-    savePage() {
+    savePage(model) {
       // trigger action on parent component
-      this.sendAction('savePage', true);
+      this.sendAction('savePage', model);
     },
-  } 
+  }
 });

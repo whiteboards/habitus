@@ -1,4 +1,4 @@
-<div class="card is-fullwidth">
+<div class="card is-fullwidth {{deleted}}">
   <header class="card-header">
     <p class="card-header-title">
       {{title}}
@@ -9,18 +9,16 @@
   </header>
   <div class="card-content">
     <div class="content">
-      {{yield}}
+      {{content}}
     </div>
   </div>
   <footer class="card-footer">
-    {{#if notEmpty}}
-      <a class="card-footer-item">View</a>
-      <a class="card-footer-item">Edit</a>
-      <a class="card-footer-item">Delete</a>
+    {{#unless isEmpty}}
+      {{yield}}
     {{else}}
-      {{#link-to 'admin.pages' class="card-footer-item button is-primary"}}
+      {{#link-to actionLink class="card-footer-item button is-primary"}}
         New
       {{/link-to}}
-    {{/if}}
+    {{/unless}}
   </footer>
 </div>

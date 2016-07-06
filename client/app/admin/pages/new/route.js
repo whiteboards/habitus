@@ -1,13 +1,13 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+  model() {
+    return this.store.createRecord('page');
+  },
   actions: {
-    savePage() {
-      let page = this.store.createRecord('page', {
-        content: this.get('content'),
-        title: this.get('title')
-      })
-      page.save().then(function (){
+    savePage(model) {
+      model.save().then(()=> {
+        console.log('we saved!')
         this.transitionTo('admin.pages');
       })
     }

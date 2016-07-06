@@ -5,15 +5,19 @@
 
 {{#each model as |page|}}
   {{#content-card
-  isEmpty=false
-  title=page.title}}
-  <p>At some point, we'll have a bit from the page here..</p>
+    isEmpty=false
+    isDeleted=page.isDeleted
+    title=page.title}}
+    <a class="card-footer-item" {{action "viewPage" page}}>View</a>
+    <a class="card-footer-item" {{action "editPage" page}}>Edit</a>
+    <a class="card-footer-item" {{action "deletePage" page}}>Delete</a>
   {{/content-card}}
   
 {{else}}
   {{#content-card
   isEmpty=true
-  title='No Existing Pages'}}
+  title='No Existing Pages'
+  actionLink='admin.pages.new'}}
     <p>Since you don't have any existing pages, you'll need to create one to get started.</p>
   {{/content-card}}  
 {{/each}}

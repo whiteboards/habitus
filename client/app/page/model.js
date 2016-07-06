@@ -6,8 +6,11 @@ export default Model.extend({
   title: attr('string'),
   content: attr('string'),
   user_id: belongsTo('user'),
-  created: attr('date'),
-  lastUpdated: attr('date'),
+  inserted_at: attr('date'),
+  updated_at: attr('date'),
   comments: hasMany('comments'),
-  tags: hasMany('tags')
+  tags: hasMany('tags'),
+  alias: Ember.computed('title', function() {
+    return `${this.get('title')}`.replace(/[^a-zA-Z0-9-_]/g, '-').toLowerCase();
+  })
 });
