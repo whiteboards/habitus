@@ -1,1 +1,8 @@
 {{outlet}}
+<section>
+    <div class="container content">
+      {{#with model as |page|}}
+        {{{page.renderedContent}}}
+      {{/with}}
+    </div>
+</section>
