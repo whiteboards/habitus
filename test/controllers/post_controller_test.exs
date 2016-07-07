@@ -1,10 +1,10 @@
-defmodule Habitus.CommentControllerTest do
+defmodule Habitus.PostControllerTest do
   use Habitus.ConnCase
 
-  alias Habitus.Comment
+  alias Habitus.Post
   alias Habitus.Repo
 
-  @valid_attrs %{content: "some content"}
+  @valid_attrs %{content: "some content", title: "some content"}
   @invalid_attrs %{}
 
   setup do
@@ -17,7 +17,6 @@ defmodule Habitus.CommentControllerTest do
   
   defp relationships do 
     user = Repo.insert!(%Habitus.User{})
-    page = Repo.insert!(%Habitus.Page{})
 
     %{
       "user" => %{
@@ -26,56 +25,50 @@ defmodule Habitus.CommentControllerTest do
           "id" => user.id
         }
       },
-      "page" => %{
-        "data" => %{
-          "type" => "page",
-          "id" => page.id
-        }
-      },
     }
   end
 
   test "lists all entries on index", %{conn: conn} do
-    conn = get conn, comment_path(conn, :index)
+    conn = get conn, post_path(conn, :index)
     assert json_response(conn, 200)["data"] == []
   end
 
   test "shows chosen resource", %{conn: conn} do
-    comment = Repo.insert! %Comment{}
-    conn = get conn, comment_path(conn, :show, comment)
+    post = Repo.insert! %Post{}
+    conn = get conn, post_path(conn, :show, post)
     data = json_response(conn, 200)["data"]
-    assert data["id"] == "#{comment.id}"
-    assert data["type"] == "comment"
-    assert data["attributes"]["content"] == comment.content
-    assert data["attributes"]["user_id"] == comment.user_id
-    assert data["attributes"]["page_id"] == comment.page_id
+    assert data["id"] == "#{post.id}"
+    assert data["type"] == "post"
+    assert data["attributes"]["title"] == post.title
+    assert data["attributes"]["content"] == post.content
+    assert data["attributes"]["user_id"] == post.user_id
   end
 
   test "does not show resource and instead throw error when id is nonexistent", %{conn: conn} do
     assert_error_sent 404, fn ->
-      get conn, comment_path(conn, :show, -1)
+      get conn, post_path(conn, :show, -1)
     end
   end
 
   test "creates and renders resource when data is valid", %{conn: conn} do
-    conn = post conn, comment_path(conn, :create), %{
+    conn = post conn, post_path(conn, :create), %{
       "meta" => %{},
       "data" => %{
-        "type" => "comment",
+        "type" => "post",
         "attributes" => @valid_attrs,
         "relationships" => relationships
       }
     }
 
     assert json_response(conn, 201)["data"]["id"]
-    assert Repo.get_by(Comment, @valid_attrs)
+    assert Repo.get_by(Post, @valid_attrs)
   end
 
   test "does not create resource and renders errors when data is invalid", %{conn: conn} do
-    conn = post conn, comment_path(conn, :create), %{
+    conn = post conn, post_path(conn, :create), %{
       "meta" => %{},
       "data" => %{
-        "type" => "comment",
+        "type" => "post",
         "attributes" => @invalid_attrs,
         "relationships" => relationships
       }
@@ -85,28 +78,28 @@ defmodule Habitus.CommentControllerTest do
   end
 
   test "updates and renders chosen resource when data is valid", %{conn: conn} do
-    comment = Repo.insert! %Comment{}
-    conn = put conn, comment_path(conn, :update, comment), %{
+    post = Repo.insert! %Post{}
+    conn = put conn, post_path(conn, :update, post), %{
       "meta" => %{},
       "data" => %{
-        "type" => "comment",
-        "id" => comment.id,
+        "type" => "post",
+        "id" => post.id,
         "attributes" => @valid_attrs,
         "relationships" => relationships
       }
     }
 
     assert json_response(conn, 200)["data"]["id"]
-    assert Repo.get_by(Comment, @valid_attrs)
+    assert Repo.get_by(Post, @valid_attrs)
   end
 
   test "does not update chosen resource and renders errors when data is invalid", %{conn: conn} do
-    comment = Repo.insert! %Comment{}
-    conn = put conn, comment_path(conn, :update, comment), %{
+    post = Repo.insert! %Post{}
+    conn = put conn, post_path(conn, :update, post), %{
       "meta" => %{},
       "data" => %{
-        "type" => "comment",
-        "id" => comment.id,
+        "type" => "post",
+        "id" => post.id,
         "attributes" => @invalid_attrs,
         "relationships" => relationships
       }
@@ -116,10 +109,10 @@ defmodule Habitus.CommentControllerTest do
   end
 
   test "deletes chosen resource", %{conn: conn} do
-    comment = Repo.insert! %Comment{}
-    conn = delete conn, comment_path(conn, :delete, comment)
+    post = Repo.insert! %Post{}
+    conn = delete conn, post_path(conn, :delete, post)
     assert response(conn, 204)
-    refute Repo.get(Comment, comment.id)
+    refute Repo.get(Post, post.id)
   end
 
 end

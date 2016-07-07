@@ -2,21 +2,24 @@ defmodule Habitus.PageController do
   use Habitus.Web, :controller
 
   alias Habitus.Page
+  alias JaSerializer.Params
+  #plug Guardian.Plug.EnsureAuthenticated, handler: Habitus.AuthErrorHandler
+  plug :scrub_params, "data" when action in [:create, :update]
 
   def index(conn, _params) do
     pages = Repo.all(Page)
-    render(conn, "index.json", pages: pages)
+    render(conn, "index.json", data: pages)
   end
 
-  def create(conn, %{"page" => page_params}) do
-    changeset = Page.changeset(%Page{}, page_params)
+  def create(conn, %{"data" => data = %{"type" => "pages", "attributes" => _page_params}}) do
+    changeset = Page.changeset(%Page{}, Params.to_attributes(data))
 
     case Repo.insert(changeset) do
       {:ok, page} ->
         conn
         |> put_status(:created)
         |> put_resp_header("location", page_path(conn, :show, page))
-        |> render("show.json", page: page)
+        |> render("show.json", data: page)
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
@@ -25,17 +28,22 @@ defmodule Habitus.PageController do
   end
 
   def show(conn, %{"id" => id}) do
-    page = Repo.get!(Page, id)
-    render(conn, "show.json", page: page)
+    page = Repo.get_by!(Page, alias: id)
+    render(conn, "show.json", data: page)
   end
+  
+  #def show_alias(conn, %{"alias" => alias}) do
+  #  page = Repo.get!(Page, alias)
+  #  render(conn, "show.json", data: page)
+  #end
 
-  def update(conn, %{"id" => id, "page" => page_params}) do
+  def update(conn, %{"id" => id, "data" => data = %{"type" => "pages", "attributes" => _page_params}}) do
     page = Repo.get!(Page, id)
-    changeset = Page.changeset(page, page_params)
+    changeset = Page.changeset(page, Params.to_attributes(data))
 
     case Repo.update(changeset) do
       {:ok, page} ->
-        render(conn, "show.json", page: page)
+        render(conn, "show.json", data: page)
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
@@ -52,4 +60,5 @@ defmodule Habitus.PageController do
 
     send_resp(conn, :no_content, "")
   end
+
 end

@@ -2,21 +2,24 @@ defmodule Habitus.CommentController do
   use Habitus.Web, :controller
 
   alias Habitus.Comment
+  alias JaSerializer.Params
+
+  plug :scrub_params, "data" when action in [:create, :update]
 
   def index(conn, _params) do
     comments = Repo.all(Comment)
-    render(conn, "index.json", comments: comments)
+    render(conn, "index.json", data: comments)
   end
 
-  def create(conn, %{"comment" => comment_params}) do
-    changeset = Comment.changeset(%Comment{}, comment_params)
+  def create(conn, %{"data" => data = %{"type" => "comment", "attributes" => _comment_params}}) do
+    changeset = Comment.changeset(%Comment{}, Params.to_attributes(data))
 
     case Repo.insert(changeset) do
       {:ok, comment} ->
         conn
         |> put_status(:created)
         |> put_resp_header("location", comment_path(conn, :show, comment))
-        |> render("show.json", comment: comment)
+        |> render("show.json", data: comment)
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
@@ -26,16 +29,16 @@ defmodule Habitus.CommentController do
 
   def show(conn, %{"id" => id}) do
     comment = Repo.get!(Comment, id)
-    render(conn, "show.json", comment: comment)
+    render(conn, "show.json", data: comment)
   end
 
-  def update(conn, %{"id" => id, "comment" => comment_params}) do
+  def update(conn, %{"id" => id, "data" => data = %{"type" => "comment", "attributes" => _comment_params}}) do
     comment = Repo.get!(Comment, id)
-    changeset = Comment.changeset(comment, comment_params)
+    changeset = Comment.changeset(comment, Params.to_attributes(data))
 
     case Repo.update(changeset) do
       {:ok, comment} ->
-        render(conn, "show.json", comment: comment)
+        render(conn, "show.json", data: comment)
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
@@ -52,4 +55,5 @@ defmodule Habitus.CommentController do
 
     send_resp(conn, :no_content, "")
   end
+
 end

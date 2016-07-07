@@ -1,11 +1,12 @@
-defmodule Habitus.Page do
+defmodule Habitus.Post do
   use Habitus.Web, :model
 
-  schema "pages" do
+  schema "posts" do
     field :title, :string
     field :content, :string
-    field :alias, :string
     belongs_to :user, Habitus.User
+    has_many :comments, Habitus.Comment
+    has_many :tags, Habitus.Tag
 
     timestamps()
   end
@@ -15,7 +16,7 @@ defmodule Habitus.Page do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:title, :content, :alias])
-    |> validate_required([:title, :content, :alias])
+    |> cast(params, [:title, :content])
+    |> validate_required([:title, :content])
   end
 end

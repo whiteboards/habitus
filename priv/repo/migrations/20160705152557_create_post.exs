@@ -1,15 +1,15 @@
-defmodule Habitus.Repo.Migrations.CreatePage do
+defmodule Habitus.Repo.Migrations.CreatePost do
   use Ecto.Migration
 
   def change do
-    create table(:pages) do
+    create table(:posts) do
       add :title, :string
       add :content, :string
       add :user_id, references(:users, on_delete: :nothing)
 
       timestamps()
     end
-    create index(:pages, [:user_id])
+    create index(:posts, [:user_id])
 
   end
 end
