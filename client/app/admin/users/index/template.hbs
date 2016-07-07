@@ -1,0 +1,26 @@
+{{outlet}}
+<h1 class='title is-1'>List of Users {{#link-to 'admin.users.new' class="button is-primary"}}
+  Add New
+{{/link-to}}</h1>
+<div class='columns'>
+{{#each model as |user|}}
+  {{#content-card
+  isEmpty=false
+  title=user.displayName
+  class='column is-one-quarter'
+  type='user'
+  typeObject=user}}
+    <a class="card-footer-item" {{action "editUser" user}}>Edit</a>
+    <a class="card-footer-item" {{action "deletePage" user}}>Delete</a>
+  {{/content-card}}
+  
+{{else}}
+  {{#content-card
+  isEmpty=true
+  title='No Existing Users'
+  ActionLink='admin.users.new'
+  class='column is-fullwidth'}}
+    <p>Since you don't have any existing Users, you'll need to create one to get started.</p>
+  {{/content-card}}  
+{{/each}}
+</div>

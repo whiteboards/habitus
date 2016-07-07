@@ -12,7 +12,7 @@ module.exports = function(defaults) {
       ]
     }
   });
-  // app.import('vendor/bulma.min.css');
+  app.import('bower_components/animate.css/animate.min.css');
   // Use `app.import` to add additional libraries to the generated
   // output files.
   //

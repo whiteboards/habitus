@@ -1,20 +1,26 @@
-{{yield}}
-<form>
+
+<form {{action "savePage" model on='submit'}}>
   <label class="label title is-4">Page Title</label>
   <p class="control">
-    <input class="input" type="text" placeholder="Index">
+    {{input class="input" type="text" name='title' value=model.title placeholder="Index"}}
   </p>
   <label class="label title is-4">Page Alias</label>
   <p class="control">
-    <input class="input" type="text" placeholder="Disabled input" disabled>
+    {{input class="input" type="text" value=alias placeholder="alias" readonly=true}}
   </p>
   <label class="label title is-4">Page content <small class=''>Accepts markdown content</small></label>
   <p class="control">
-    <textarea class="textarea" placeholder="##Page Content"></textarea>
+    {{textarea class="textarea" name='content' value=model.content placeholder="##Page Content"}}
   </p>
   <p class="control">
     <button class="button is-success">
       Save
     </button>
   </p>
+  <div class='content content-preview'>
+    <h1 class='title is-2'>Page Preview</h1>
+    <hr/>
+    
+    {{{previewContent}}}
+  </div>
 </form>

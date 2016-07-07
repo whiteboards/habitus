@@ -3,22 +3,7 @@
     <div class="hero-body">
       <div class="container level">
         <figure class="image is-128x128 level-left">
-          <img src="/logo3.svg" class='level-item'>
-        </figure>
-        <figure class="image is-128x128 level-left">
-          <img src="/logo2.svg" class='level-item'>
-        </figure>
-        <figure class="image is-128x128 level-left">
-          <img src="/logo.svg" class='level-item'>
-        </figure>
-        <figure class="image is-128x128 level-left">
-          <img src="/logo4.svg" class='level-item'>
-        </figure>
-        <figure class="image is-128x128 level-left">
           <img src="/logo5.svg" class='level-item'>
-        </figure>
-        <figure class="image is-128x128 level-left">
-          <img src="/logo6.svg" class='level-item'>
         </figure>
         <div class='level-item'>
           <h1 class="title">
@@ -32,58 +17,10 @@
     </div>
   </section>
   <section>
-    <div class="container">
-      <div class='content page__content'>
-        <h1>Hello World</h1>
-        <article class="media">
-          <figure class="media-left">
-            <div class="card">
-              <div class="card-image">
-                <figure class="image is-4by3">
-                  <img src="http://placekitten.com/400/300">
-                </figure>
-              </div>
-            </div>
-          </figure>
-          <div class="media-content">
-            <div class="content">
-              <p>
-                To get started with Habitus, log in to the admin panel, and start messing around! Create pages, or posts, and come back here to see the result!
-              </p>
-              <p>
-                You can edit this page itself by going to the admin panel -> pages -> index!
-              </p>
-            </div>
-          </div>
-        </article>
-        
-        <h2>Here we have a list of the pages we guess people will make in the system</h2>
-          {{#each model as |page|}}
-            <div class="item" data-id="{{page.id}}">
-              {{page.title}}
-            </div>
-            
-          {{/each}}
-        <h3>Cool, fake, user stats</h3>
-        <nav class="level">
-          <div class="level-item has-text-centered">
-            <p class="heading">Vistors today</p>
-            <p class="title">3,456</p>
-          </div>
-          <div class="level-item has-text-centered">
-            <p class="heading">Click-through users</p>
-            <p class="title">123</p>
-          </div>
-          <div class="level-item has-text-centered">
-            <p class="heading">Followers</p>
-            <p class="title">456K</p>
-          </div>
-          <div class="level-item has-text-centered">
-            <p class="heading">Reasons we are awesome</p>
-            <p class="title">789</p>
-          </div>
-        </nav>
-      </div>
+    <div class="container content">
+      {{#with model as |page|}}
+        {{{page.renderedContent}}}
+      {{/with}}
     </div>
   </section>
 </div>
