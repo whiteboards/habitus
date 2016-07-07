@@ -5,6 +5,7 @@ defmodule Habitus.Repo.Migrations.CreatePage do
     create table(:pages) do
       add :title, :string
       add :content, :string
+      add :alias, :string
       add :user_id, references(:users, on_delete: :nothing)
 
       timestamps()

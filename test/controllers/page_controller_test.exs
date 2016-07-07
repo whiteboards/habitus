@@ -4,7 +4,7 @@ defmodule Habitus.PageControllerTest do
   alias Habitus.Page
   alias Habitus.Repo
 
-  @valid_attrs %{content: "some content", title: "some content"}
+  @valid_attrs %{alias: "some content", content: "some content", title: "some content"}
   @invalid_attrs %{}
 
   setup do
@@ -41,6 +41,7 @@ defmodule Habitus.PageControllerTest do
     assert data["type"] == "page"
     assert data["attributes"]["title"] == page.title
     assert data["attributes"]["content"] == page.content
+    assert data["attributes"]["alias"] == page.alias
     assert data["attributes"]["user_id"] == page.user_id
   end
 

@@ -3,7 +3,8 @@ defmodule Habitus.UserController do
 
   alias Habitus.User
   alias JaSerializer.Params
-  plug Guardian.Plug.EnsureAuthenticated, handler: Habitus.AuthErrorHandler
+  
+  #plug Guardian.Plug.EnsureAuthenticated, handler: Habitus.AuthErrorHandler
   plug :scrub_params, "data" when action in [:create, :update]
 
   def index(conn, _params) do
@@ -11,7 +12,7 @@ defmodule Habitus.UserController do
     render(conn, "index.json", data: users)
   end
 
-  def create(conn, %{"data" => data = %{"type" => "user", "attributes" => _user_params}}) do
+  def create(conn, %{"data" => data = %{"type" => "users", "attributes" => _user_params}}) do
     changeset = User.changeset(%User{}, Params.to_attributes(data))
 
     case Repo.insert(changeset) do
@@ -32,7 +33,7 @@ defmodule Habitus.UserController do
     render(conn, "show.json", data: user)
   end
 
-  def update(conn, %{"id" => id, "data" => data = %{"type" => "user", "attributes" => _user_params}}) do
+  def update(conn, %{"id" => id, "data" => data = %{"type" => "users", "attributes" => _user_params}}) do
     user = Repo.get!(User, id)
     changeset = User.changeset(user, Params.to_attributes(data))
 

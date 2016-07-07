@@ -3,7 +3,7 @@ defmodule Habitus.PageController do
 
   alias Habitus.Page
   alias JaSerializer.Params
-  plug Guardian.Plug.EnsureAuthenticated, handler: Habitus.AuthErrorHandler
+  #plug Guardian.Plug.EnsureAuthenticated, handler: Habitus.AuthErrorHandler
   plug :scrub_params, "data" when action in [:create, :update]
 
   def index(conn, _params) do
@@ -11,7 +11,7 @@ defmodule Habitus.PageController do
     render(conn, "index.json", data: pages)
   end
 
-  def create(conn, %{"data" => data = %{"type" => "page", "attributes" => _page_params}}) do
+  def create(conn, %{"data" => data = %{"type" => "pages", "attributes" => _page_params}}) do
     changeset = Page.changeset(%Page{}, Params.to_attributes(data))
 
     case Repo.insert(changeset) do
@@ -28,11 +28,16 @@ defmodule Habitus.PageController do
   end
 
   def show(conn, %{"id" => id}) do
-    page = Repo.get!(Page, id)
+    page = Repo.get_by!(Page, alias: id)
     render(conn, "show.json", data: page)
   end
+  
+  #def show_alias(conn, %{"alias" => alias}) do
+  #  page = Repo.get!(Page, alias)
+  #  render(conn, "show.json", data: page)
+  #end
 
-  def update(conn, %{"id" => id, "data" => data = %{"type" => "page", "attributes" => _page_params}}) do
+  def update(conn, %{"id" => id, "data" => data = %{"type" => "pages", "attributes" => _page_params}}) do
     page = Repo.get!(Page, id)
     changeset = Page.changeset(page, Params.to_attributes(data))
 

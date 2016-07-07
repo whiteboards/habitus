@@ -4,7 +4,7 @@ defmodule Habitus.UserControllerTest do
   alias Habitus.User
   alias Habitus.Repo
 
-  @valid_attrs %{display_name: "some content", email: "some content", first_name: "some content", last_name: "some content", password_hash: "some content"}
+  @valid_attrs %{display_name: "some content", email: "some content", first_name: "some content", last_name: "some content", password_hash: "some content", role: "some content"}
   @invalid_attrs %{}
 
   setup do
@@ -35,6 +35,7 @@ defmodule Habitus.UserControllerTest do
     assert data["attributes"]["last_name"] == user.last_name
     assert data["attributes"]["email"] == user.email
     assert data["attributes"]["password_hash"] == user.password_hash
+    assert data["attributes"]["role"] == user.role
   end
 
   test "does not show resource and instead throw error when id is nonexistent", %{conn: conn} do

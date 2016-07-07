@@ -7,6 +7,7 @@ defmodule Habitus.User do
     field :last_name, :string
     field :email, :string
     field :password_hash, :string
+    field :role, :string
     field :password, :string, virtual: true
     field :password_confirmation, :string, virtual: true
 

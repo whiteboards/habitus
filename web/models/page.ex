@@ -4,6 +4,7 @@ defmodule Habitus.Page do
   schema "pages" do
     field :title, :string
     field :content, :string
+    field :alias, :string
     belongs_to :user, Habitus.User
 
     timestamps()
@@ -14,7 +15,7 @@ defmodule Habitus.Page do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:title, :content])
-    |> validate_required([:title, :content])
+    |> cast(params, [:title, :content, :alias])
+    |> validate_required([:title, :content, :alias])
   end
 end
