@@ -6,11 +6,11 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('page', { path: '/page/:page_id' });
+  this.route('page', { path: 'page/:page_alias' });
   this.route('admin', function() {
     this.route('pages', function() {
       this.route('new');
-      this.route('edit');
+      this.route('edit', { path: 'edit/:page_id'});
     });
     this.route('blog');
     this.route('users', function() {
@@ -22,7 +22,7 @@ Router.map(function() {
   this.route('login');
   this.route('install');
   this.route('loading');
-  this.route('error');
+  // this.route('error');
 });
 
 export default Router;

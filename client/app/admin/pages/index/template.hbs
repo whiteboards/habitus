@@ -2,22 +2,27 @@
 <h1 class='title is-1'>List of pages {{#link-to 'admin.pages.new' class="button is-primary"}}
   Add New
 {{/link-to}}</h1>
-
-{{#each model as |page|}}
-  {{#content-card
-    isEmpty=false
-    isDeleted=page.isDeleted
-    title=page.title}}
-    <a class="card-footer-item" {{action "viewPage" page}}>View</a>
-    <a class="card-footer-item" {{action "editPage" page}}>Edit</a>
-    <a class="card-footer-item" {{action "deletePage" page}}>Delete</a>
-  {{/content-card}}
-  
-{{else}}
-  {{#content-card
-  isEmpty=true
-  title='No Existing Pages'
-  actionLink='admin.pages.new'}}
-    <p>Since you don't have any existing pages, you'll need to create one to get started.</p>
-  {{/content-card}}  
-{{/each}}
+<div class="columns">
+  {{#each model as |page|}}
+    {{#content-card class='column is-one-quarter'
+      isEmpty=false
+      isDeleted=page.isDeleted
+      title=page.title
+      content=page
+      extraClasses=''
+      }}
+      <a class="card-footer-item" {{action "viewPage" page}}>View</a>
+      <a class="card-footer-item" {{action "editPage" page}}>Edit</a>
+      <a class="card-footer-item" {{action "deletePage" page}}>Delete</a>
+    {{/content-card}}
+    
+  {{else}}
+    {{#content-card class='column is-fullwidth'
+    isEmpty=true
+    title='No Existing Pages'
+    extraClasses=''
+    actionLink='admin.pages.new'}}
+      <p>Since you don't have any existing pages, you'll need to create one to get started.</p>
+    {{/content-card}}  
+  {{/each}}
+</div>

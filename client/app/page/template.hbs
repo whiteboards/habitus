@@ -1,7 +1,8 @@
 {{outlet}}
 <section>
-    <div class="container">
-      <h1>test</h1>
-      {{{model.content}}}
+    <div class="container content">
+      {{#with model as |page|}}
+        {{{page.renderedContent}}}
+      {{/with}}
     </div>
 </section>

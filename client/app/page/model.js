@@ -1,16 +1,20 @@
 import Model from 'ember-data/model';
 import attr from 'ember-data/attr';
 import { belongsTo, hasMany } from 'ember-data/relationships';
+import marked from 'npm:marked'
 
 export default Model.extend({
   title: attr('string'),
   content: attr('string'),
-  user_id: belongsTo('user'),
-  inserted_at: attr('date'),
-  updated_at: attr('date'),
+  userId: belongsTo('user'),
+  insertedAt: attr('date'),
+  updatedAt: attr('date'),
   comments: hasMany('comments'),
   tags: hasMany('tags'),
-  alias: Ember.computed('title', function() {
-    return `${this.get('title')}`.replace(/[^a-zA-Z0-9-_]/g, '-').toLowerCase();
-  })
+  alias: attr('string'),
+  renderedContent: Ember.computed('content', function () {
+    console.log('model:', this.get('content'))
+    if (this.get('content') === undefined) {return ''}
+    return marked(this.get('content'))
+  }), 
 });
