@@ -8,28 +8,7 @@
               Login
             </h1>
           </header>
-          <div class="card-content">
-            <div class="content">
-              <form>
-                <label class="label">E-mail/Username:</label>
-                <p class="control has-icon">
-                  <input class="input is-large" type="text" placeholder="Enter email" required>
-                  <i class="fa fa-user"></i>
-                </p>
-                <label class="label">Password:</label>
-                <p class="control has-icon">
-                  <input class="input is-large" type="password" placeholder="Enter password" required>
-                  <i class="fa fa-lock"></i>
-                </p>
-                <p class="control">
-                  <button class="button is-primary is-medium">Login</button>
-                  {{#link-to 'index' class="button is-medium is-link"}}
-                    Cancel
-                  {{/link-to}}
-                </p>
-              </form>
-            </div>
-          </div>
+          {{login-form}}{{/login-form}}
         </div>
       </div>
     </div>

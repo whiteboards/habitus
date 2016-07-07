@@ -28,12 +28,14 @@
     {{#link-to 'index' class="nav-item"}}
       Home
     {{/link-to}}
-    {{#link-to 'login' class="nav-item"}}
-      Login
-    {{/link-to}}
-    {{#link-to 'admin' class="nav-item"}}
-      Admin
-    {{/link-to}}
+    {{#if session.isAuthenticated}}
+      {{#link-to 'admin' class="nav-item"}}
+        Admin
+      {{/link-to}}
+      <a {{action 'invalidateSession'}}>Logout</a>
+    {{else}}
+      {{#link-to 'login' class="nav-item"}}Login{{/link-to}}
+    {{/if}}
     {{#link-to 'blog' class="nav-item"}}
       Blog
     {{/link-to}}
