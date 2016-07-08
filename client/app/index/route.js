@@ -4,6 +4,7 @@ export default Ember.Route.extend({
   model() {
     return this.store.findRecord('page', 'index');
   },
+  session: Ember.inject.service('session'),
   actions: {
     error(error, transition) {
       if (error) {
