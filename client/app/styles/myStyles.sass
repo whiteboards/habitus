@@ -14,15 +14,20 @@ html
   
 .loading
   width: 256px
-  height: 256px
+  height: 296px
   margin-left: auto
   margin-right: auto
 .section 
   background-color: $primary-bg
 
+.login__card
+  padding: 1em
+
+.login__card--progress
+  animation: login__progress 5s infinite
+  
 .login__card .fa.fa-sign-in 
   margin-left: .5em
-
 .login__card header 
   box-shadow: unset
 
@@ -42,3 +47,27 @@ html
 
 .media
   flex-flow: row wrap
+
+.columns
+  flex-flow: row wrap  
+
+$animation-progress--color: #199fae
+@keyframes login__progress 
+  0% 
+    box-shadow: 0px 0px 0px $animation-progress--color
+
+  20% 
+    box-shadow: 0px 0px 10px $animation-progress--color
+  
+  40% 
+    box-shadow: 0px 0px 0px $animation-progress--color
+  
+  60% 
+    box-shadow: 0px 0px 10px $animation-progress--color
+  
+  80% 
+    box-shadow: 0px 0px 0px $animation-progress--color
+  
+  100% 
+    box-shadow: 0px 0px 0px $animation-progress--color
+  

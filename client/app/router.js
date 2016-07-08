@@ -14,7 +14,7 @@ Router.map(function() {
     });
     this.route('blog');
     this.route('users', function() {
-      this.route('edit');
+      this.route('edit', { path: 'edit/:user_id'});
       this.route('new');
     });
   });

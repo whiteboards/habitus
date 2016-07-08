@@ -1,5 +1,5 @@
 {{outlet}}
-<h1 class='title is-1'>List of Users {{#link-to 'admin.users.new' class="button is-primary"}}
+<h1 class='title is-1'>Users {{#link-to 'admin.users.new' class="button is-primary"}}
   Add New
 {{/link-to}}</h1>
 <div class='columns'>
@@ -11,7 +11,7 @@
   type='user'
   typeObject=user}}
     <a class="card-footer-item" {{action "editUser" user}}>Edit</a>
-    <a class="card-footer-item" {{action "deletePage" user}}>Delete</a>
+    <a class="card-footer-item" {{action "deleteUser" user}}>Delete</a>
   {{/content-card}}
   
 {{else}}

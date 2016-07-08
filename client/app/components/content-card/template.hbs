@@ -17,9 +17,10 @@
       </ul>
       {{/if}}
       {{#if typeObject.displayName}}
-        {{#each typeObject}}
-          {{@key}}: {{this}}
-        {{/each}}
+      <ul>
+        <li>Display Name: {{typeObject.displayName}}</li>
+        <li>User Role: {{typeObject.role}}</li>
+      </ul>
       {{/if}}
     </div>
   </div>

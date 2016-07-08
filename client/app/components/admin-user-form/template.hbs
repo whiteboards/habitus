@@ -1,0 +1,32 @@
+{{#form-card
+  class='is-one-half'
+  actionEvent=(action "saveUser" model)
+  model=model
+  title='Edit User'
+  primaryType='submit'
+  primaryText='Save'
+  secondaryAction="cancel"
+  secondaryText='Cancel'}}
+  <label class="label title is-5">First Name</label>
+  <p class="control">
+    {{input class="input" type="text" name='title' value=model.firstName placeholder="Joe"}}
+  </p>
+  <label class="label title is-5">Last Name</label>
+  <p class="control">
+    {{input class="input" type="text" name='title' value=model.lastName placeholder="Smoe"}}
+  </p>
+  <label class="label title is-5">E-mail</label>
+  <p class="control">
+    {{input class="input" type="email" name='title' value=model.email placeholder="joe@smoe.com"}}
+  </p>
+  <label class="label title is-5">Role</label>
+  <p class="control">
+    {{input class="input" type="text" name='title' value=model.role placeholder="user"}}
+  </p>
+  <label class="label title is-5">Display Name/username</label>
+  <p class="control">
+    {{input class="input" type="text" name='title' value=model.displayName placeholder="JoeSmoe"}}
+  </p>
+  
+  {{yield}}
+{{/form-card}}

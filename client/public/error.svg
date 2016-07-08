@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg id="svg2" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" height="140.72mm" width="121.86mm" version="1.1" xmlns:cc="http://creativecommons.org/ns#" viewBox="0 0 431.80469 498.62265" xmlns:dc="http://purl.org/dc/elements/1.1/">
+ <defs id="defs4">
+  <filter id="filter6862" style="color-interpolation-filters:sRGB" height="1.0582" width="1.0672" y="-.029110" x="-.033613">
+   <feGaussianBlur id="feGaussianBlur6864" stdDeviation="5.5649186"/>
+  </filter>
+  <style>
+      @keyframes dash {
+        to {
+          stroke: red;
+          stroke-width: 10;
+        }
+      }
+    .path {
+      stroke-dasharray: 2000;
+      stroke-dashoffset: 0;
+      animation: dash 3s linear forwards;
+      fill: white;
+      stroke-width: 1;
+    }  
+  </style>
+ </defs>
+ <metadata id="metadata7">
+  <rdf:RDF>
+   <cc:Work rdf:about="">
+    <dc:format>image/svg+xml</dc:format>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:title/>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <g id="layer1" transform="translate(-127.05 -6.8251)">
+  <path id="path6369-2" filter="url(#filter6862)" d="m543.35 370.72-198.67 114.7-198.67-114.7v-229.4l198.67-114.71 198.67 114.7z"/>
+  <path id="path6369" fill="#b1e9d5" stroke="#40806a" stroke-width="10" class="path" d="m543.35 370.69-198.67 114.7-198.67-114.7v-229.4l198.67-114.7 198.67 114.7z"/>
+  <path id="path6402" fill="#40806a" d="m259.1 108.03v7.6383 0.8501 258.74h33.743v-115.57c0-19.962 5.2302-35.726 15.688-47.289s24.747-17.345 42.866-17.345c15.079 0 26.387 4.8088 33.927 14.425 7.5395 9.6159 11.31 24.1 11.31 43.454v122.33h33.564v-123.42c0-28.239-6.0217-49.601-18.061-64.086-12.039-14.606-29.792-21.908-53.261-21.908-14.228 0-26.814 3.0422-37.758 9.1282-10.823 6.086-20.248 15.274-28.274 27.568v-111.37h-4.5147l0.0647 0.11143-29.225 16.873-0.0683-0.11861z"/>
+ </g>
+</svg>

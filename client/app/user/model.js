@@ -8,5 +8,6 @@ export default Model.extend({
   email: attr('string'),
   role: attr('string'),
   displayName: attr('string'),
-  password: attr('string')  
+  password: attr('string'),  
+  passwordConfirmation: attr('string')
 });
