@@ -1,5 +1,6 @@
 {{outlet}}
-<button {{action "editPassword"}} class='button is-danger'>{{if isEditingPassword "Edit user" "Edit Password"}}</button>
+<button {{action "editPassword"}} class='button is-danger'>Edit Password</button>
+<button>{{canEditPassword}}</button>
 {{#unless isEditingPassword}}
   {{#admin-user-form model=model
     saveUser='saveUser'}}
