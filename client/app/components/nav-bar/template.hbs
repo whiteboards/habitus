@@ -30,7 +30,7 @@
       Home
     {{/link-to}}
     {{#if session.isAuthenticated}}
-      {{#link-to 'admin' class="nav-item"}}
+      {{#link-to 'admin' class="nav-item" activeClass='is-active'}}
         Admin
       {{/link-to}}
       <a class="nav-item" {{action 'invalidateSession'}}>Logout</a>

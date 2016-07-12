@@ -12,7 +12,10 @@ Router.map(function() {
       this.route('new');
       this.route('edit', { path: 'edit/:page_id'});
     });
-    this.route('blog');
+    this.route('blog', function() {
+      this.route('new');
+      this.route('edit');
+    });
     this.route('users', function() {
       this.route('edit', { path: 'edit/:user_id'});
       this.route('new');

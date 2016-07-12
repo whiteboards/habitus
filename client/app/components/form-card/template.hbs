@@ -13,7 +13,7 @@
   </div>
   <footer class="card-footer">
     {{#if primaryType}}
-      <a {{action "actionEvent"}} class="card-footer-item is-primary"> {{primaryText}}</a>
+      <button {{action "actionEvent"}} class="card-footer-item is-primary {{if isInProgress "is-disabled" ""}}"> {{primaryText}}</button>
     {{/if}}
     {{#if secondaryAction}}
       <a {{action secondaryAction}} class="card-footer-item">{{secondaryText}}</a>

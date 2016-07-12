@@ -7,37 +7,47 @@
               General *TODO* make into component
             </p>
             <ul class="menu-list">
-              <li><a class='is-active' href="#">Dashboard</a></li>
+              <li>
+                {{#link-to 'admin.index' class="nav-item" activeClass='is-active'}}
+                  Admin Dashboard
+                {{/link-to}}
+              </li>
             </ul>
             <p class="menu-label">
               Site Management
             </p>
             <ul class="menu-list">
-              <li>{{#link-to 'admin.pages' class="nav-item"}}
+              <li>{{#link-to 'admin.pages.index' class="nav-item" activeClass='is-active'}}
                     Pages
                   {{/link-to}}
                 <ul>
                   <li>
-                    {{#link-to 'admin.pages.new' class="nav-item"}}
+                    {{#link-to 'admin.pages.new' class="nav-item" activeClass='is-active'}}
                     New Page
                     {{/link-to}}
                   </li>
                   <li>
-                  {{#link-to 'admin.pages' class="nav-item"}}
+                  {{#link-to 'admin.pages.index' class="nav-item" activeClass='is-active'}}
                     View Pages
                   {{/link-to}}
                   </li>
                 </ul>
               </li>
               <li>
-                <a href="#">Blog</a>
+                {{#link-to 'admin.blog.index' class="nav-item" activeClass='is-active'}}
+                    Blog
+                  {{/link-to}}
                 <ul>
-                  <li><a href="#">Add New Post</a></li>
+                  <li> 
+                    {{#link-to 'admin.blog.new' class="nav-item" activeClass='is-active'}}
+                      New Post
+                    {{/link-to}}
+                    </li>
                 </ul>
               </li>
-              <li><a href="#">Settings</a></li>
+              <li><a href="">Settings</a></li>
               <li>
-                {{#link-to 'admin.users' class="nav-item"}}
+                {{#link-to 'admin.users.index' class="nav-item" activeClass='is-active'}}
                     Users
                 {{/link-to}}
               </li>
@@ -46,9 +56,9 @@
               Other
             </p>
             <ul class="menu-list">
-              <li><a href="#">Make a backup</a></li>
-              <li><a href="#">Style Editor</a></li>
-              <li><a href="#">Feature?</a></li>
+              <li><a href="">Make a backup</a></li>
+              <li><a href="">Style Editor</a></li>
+              <li><a href="">Feature?</a></li>
             </ul>
           </aside>
         </div>

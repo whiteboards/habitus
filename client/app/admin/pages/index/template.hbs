@@ -11,7 +11,7 @@
       content=page
       extraClasses=''
       }}
-      <a class="card-footer-item" {{action "viewPage" page}}>View</a>
+      {{#link-to 'page' page.alias class="card-footer-item"}}View{{/link-to}}
       <a class="card-footer-item" {{action "editPage" page}}>Edit</a>
       <a class="card-footer-item" {{action "deletePage" page}}>Delete</a>
     {{/content-card}}

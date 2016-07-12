@@ -3,14 +3,15 @@
   Add New
 {{/link-to}}</h1>
 <div class='columns'>
-{{#each model as |user|}}
+{{#each model.users as |user|}}
   {{#content-card
   isEmpty=false
   title=user.displayName
   class='column is-one-quarter'
   type='user'
-  typeObject=user}}
-    <a class="card-footer-item" {{action "editUser" user}}>Edit</a>
+  typeObject=user
+  roles=roles}}
+    <a class="card-footer-item" {{action "editUser" user model.roles}}>Edit</a>
     <a class="card-footer-item" {{action "deleteUser" user}}>Delete</a>
   {{/content-card}}
   

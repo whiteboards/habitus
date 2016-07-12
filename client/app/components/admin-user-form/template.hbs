@@ -1,7 +1,7 @@
 {{#form-card
   class='is-one-half'
-  actionEvent=(action "saveUser" model)
-  model=model
+  actionEvent=(action "saveUser" model.user)
+  model=model.user
   title='Edit User'
   primaryType='submit'
   primaryText='Save'
@@ -9,23 +9,31 @@
   secondaryText='Cancel'}}
   <label class="label title is-5">First Name</label>
   <p class="control">
-    {{input class="input" type="text" name='title' value=model.firstName placeholder="Joe"}}
+    {{input class="input" type="text" name='title' value=model.user.firstName placeholder="Joe"}}
   </p>
   <label class="label title is-5">Last Name</label>
   <p class="control">
-    {{input class="input" type="text" name='title' value=model.lastName placeholder="Smoe"}}
+    {{input class="input" type="text" name='title' value=model.user.lastName placeholder="Smoe"}}
   </p>
   <label class="label title is-5">E-mail</label>
   <p class="control">
-    {{input class="input" type="email" name='title' value=model.email placeholder="joe@smoe.com"}}
+    {{input class="input" type="email" name='title' value=model.user.email placeholder="joe@smoe.com"}}
   </p>
   <label class="label title is-5">Role</label>
   <p class="control">
-    {{input class="input" type="text" name='title' value=model.role placeholder="user"}}
+    <span class="select">
+        <select value=model.role>
+      {{#with model.roles as |roles|}}
+          {{#each roles key="roleType" as |role|}}
+            <option value={{role.id}}>{{role.roleType}}</option>
+          {{/each}}
+      {{/with}}
+        </select>
+    </span>
   </p>
   <label class="label title is-5">Display Name/username</label>
   <p class="control">
-    {{input class="input" type="text" name='title' value=model.displayName placeholder="JoeSmoe"}}
+    {{input class="input" type="text" name='title' value=model.user.displayName placeholder="JoeSmoe"}}
   </p>
   
   {{yield}}

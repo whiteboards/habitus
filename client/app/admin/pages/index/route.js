@@ -2,10 +2,6 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   actions: {
-    viewPage(alias) {
-      console.log('page', alias)
-      this.transitionTo('page', alias);
-    },
     editPage(alias) {
       this.transitionTo('admin.pages.edit', alias);
     },

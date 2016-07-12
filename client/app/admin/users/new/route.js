@@ -5,6 +5,9 @@ export default Ember.Route.extend({
     return this.store.createRecord('user');
   },
   actions: {
+    cancel() {
+      this.sendAction('cancel')
+    },
     saveUser(model) {
       model.save().then(()=> {
         console.log('we saved!')
