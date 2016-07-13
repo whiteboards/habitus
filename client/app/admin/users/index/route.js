@@ -4,7 +4,7 @@ export default Ember.Route.extend({
   actions: {
     editUser(user, roles) {
       // console.log('obj:', this.get('model')('roles'))
-      console.log('roles?', roles)
+      // console.log('roles?', roles)
       let UserWithRoles = Ember.RSVP.hash({
         id: user.id,
         user: user,

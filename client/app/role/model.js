@@ -4,5 +4,5 @@ import { hasMany } from 'ember-data/relationships';
 
 export default Model.extend({
   roleType: attr('string'),
-  users: hasMany('user', { async: true})
+  users: hasMany('user')
 });

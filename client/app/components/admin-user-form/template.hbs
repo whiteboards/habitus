@@ -21,8 +21,10 @@
   </p>
   <label class="label title is-5">Role</label>
   <p class="control">
+    {{input class="input" type="email" name='title' value=roleId placeholder="1"}}
+<!--    
     <span class="select">
-        <select value=model.role>
+        <select value=roleId>
       {{#with model.roles as |roles|}}
           {{#each roles key="roleType" as |role|}}
             {{#if (eq model.user.role.roleType role.roleType)}} 
@@ -33,7 +35,7 @@
           {{/each}}
       {{/with}}
         </select>
-    </span>
+    </span>-->
   </p>
   <label class="label title is-5">Display Name/username</label>
   <p class="control">

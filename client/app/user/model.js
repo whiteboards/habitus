@@ -6,7 +6,7 @@ export default Model.extend({
   firstName: attr('string'),
   lastName: attr('string'),
   email: attr('string'),
-  role: belongsTo('role', { async: true}),
+  role: belongsTo('role'),
   displayName: attr('string'),
   password: attr('string'),  
   passwordConfirmation: attr('string')
