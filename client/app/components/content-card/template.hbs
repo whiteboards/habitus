@@ -19,7 +19,10 @@
       {{#if typeObject.displayName}}
       <ul>
         <li>Display Name: {{typeObject.displayName}}</li>
-        <li>User Role: {{typeObject.roleId.value}}</li>
+        {{#with typeObject.role as |role|}}
+        {{log role}}
+        <li>User Role: {{role.roleType}}</li>
+        {{/with}}
       </ul>
       {{/if}}
     </div>

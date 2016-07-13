@@ -25,7 +25,11 @@
         <select value=model.role>
       {{#with model.roles as |roles|}}
           {{#each roles key="roleType" as |role|}}
+            {{#if (eq model.user.role.roleType role.roleType)}} 
+            <option value={{role.id}} selected>{{role.roleType}}</option>
+            {{else}}
             <option value={{role.id}}>{{role.roleType}}</option>
+            {{/if}}
           {{/each}}
       {{/with}}
         </select>

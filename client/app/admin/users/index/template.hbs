@@ -10,7 +10,8 @@
   class='column is-one-quarter'
   type='user'
   typeObject=user
-  roles=roles}}
+  store=store
+  roles=model.roles}}
     <a class="card-footer-item" {{action "editUser" user model.roles}}>Edit</a>
     <a class="card-footer-item" {{action "deleteUser" user}}>Delete</a>
   {{/content-card}}
