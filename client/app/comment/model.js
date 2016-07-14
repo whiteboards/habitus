@@ -5,7 +5,7 @@ import { belongsTo, hasMany } from 'ember-data/relationships';
 export default Model.extend({
   content: attr('string'),
   created: attr('date'),
-  user_id: belongsTo('user'),
+  user: belongsTo('user'),
   page: belongsTo('page'),
   post: belongsTo('post')
 });

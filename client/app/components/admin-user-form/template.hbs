@@ -5,8 +5,9 @@
   title='Edit User'
   primaryType='submit'
   primaryText='Save'
-  secondaryAction="cancel"
-  secondaryText='Cancel'}}
+  secondaryAction=(action "cancel")
+  secondaryText='Cancel'
+  isInProgress=isInProgress}}
   <label class="label title is-5">First Name</label>
   <p class="control">
     {{input class="input" type="text" name='title' value=model.user.firstName placeholder="Joe"}}
@@ -17,7 +18,7 @@
   </p>
   <label class="label title is-5">E-mail</label>
   <p class="control">
-    {{input class="input" type="email" name='title' value=model.user.email placeholder="joe@smoe.com"}}
+    {{input class="input" type="email" name='title' value=model.user.email placeholder="joe@smoe.com" required=true}}
   </p>
   <label class="label title is-5">Role</label>
   <p class="control">

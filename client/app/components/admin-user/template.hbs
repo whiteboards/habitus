@@ -1,12 +1,17 @@
 {{yield}}
 <button {{action "editPassword" on="click"}} class='button is-danger'>{{if isEditingPassword "Edit user" "Edit Password"}}</button>
-
 {{#unless isEditingPassword}}
   {{#admin-user-form model=model
-    saveUser='saveUser'}}
+    saveUser='saveUser'
+    isInProgress=isInProgress
+    store=store
+    cancelAction=(action "cancel")}}
   {{/admin-user-form}}
 {{else}}
   {{#admin-user-password-form model=model.user
-    saveUser='saveUser'}}
+    saveUser='saveUser'
+    isInProgress=isInProgress
+    store=store
+    cancelAction=(action "cancel")}}
   {{/admin-user-password-form}}
 {{/unless}}

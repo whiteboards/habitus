@@ -1,3 +1,5 @@
 {{outlet}}
-
+{{#link-to 'admin.users.index' class="button is-info" activeClass='is-active'}}
+  Go back
+{{/link-to}}
 {{#admin-user model=model saveUser='saveUser' store=store}}{{/admin-user}}

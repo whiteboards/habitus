@@ -2,11 +2,15 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   model() {
-    return this.store.createRecord('user');
+    return Ember.RSVP.hash({
+      user: this.store.createRecord('user'),
+      roles: this.store.findAll('role')
+    });
   },
   actions: {
     cancel() {
-      this.sendAction('cancel')
+      console.log('cancel triggered')
+      this.transitionTo('admin.users.index');
     },
     saveUser(model) {
       model.save().then(()=> {

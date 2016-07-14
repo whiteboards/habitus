@@ -4,9 +4,10 @@
 {{/link-to}}</h1>
 <div class="columns">
   {{#each model as |page|}}
-    {{#content-card class='column is-one-quarter'
+    {{#content-card class='column is-one-third'
       isEmpty=false
       isDeleted=page.isDeleted
+      isFull=true
       title=page.title
       content=page
       extraClasses=''
@@ -20,6 +21,7 @@
     {{#content-card class='column is-fullwidth'
     isEmpty=true
     title='No Existing Pages'
+    isFull=true
     extraClasses=''
     actionLink='admin.pages.new'}}
       <p>Since you don't have any existing pages, you'll need to create one to get started.</p>

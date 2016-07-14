@@ -7,9 +7,13 @@ export default Ember.Component.extend({
       // console.log('actionEvent fired:', this.get('actionEvent'))
       this.get('actionEvent')(model)
     },
+    secondaryAction(action) {
+      console.log('actionEvent fired:', this.get('secondaryAction'))
+      this.get('secondaryAction')()
+    },
     cancel() {
       console.log('cancel from form-card')
-      this.sendAction('cancel')
+      this.get('cancel')()
     }
   }
 });

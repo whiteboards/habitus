@@ -1,0 +1,6 @@
+{{yield}}
+<section>
+  {{#each comments as |comment|}}
+    {{#comment-card title=comment.user.displayName}}{{comment.content}}{{/comment-card}}
+  {{/each}}
+</section>

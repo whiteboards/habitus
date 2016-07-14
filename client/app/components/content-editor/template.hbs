@@ -8,6 +8,19 @@
   <p class="control">
     {{input class="input" type="text" value=alias placeholder="alias" readonly=true}}
   </p>
+  <label class="label">Enable comments?</label>
+  <p class="control">
+    <span class="select">
+      {{#power-select
+        selected=model.enableComments
+        options=commentOptions
+        onchange=(action "enableComments")
+        as |name|
+      }}
+        {{name}}
+      {{/power-select}}
+    </span>
+  </p>
   <label class="label title is-4">Page content <small class=''>Accepts markdown content</small></label>
   <p class="control">
     {{textarea class="textarea" name='content' value=model.content placeholder="##Page Content"}}

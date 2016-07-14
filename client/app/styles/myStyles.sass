@@ -24,7 +24,10 @@ html
   padding: 1em
 
 .login__card--progress
-  animation: login__progress 5s infinite
+  animation: event__progress 5s infinite
+  
+.loading--progress
+  animation: event__progress 5s infinite
   
 .login__card .fa.fa-sign-in 
   margin-left: .5em
@@ -52,7 +55,7 @@ html
   flex-flow: row wrap  
 
 $animation-progress--color: #199fae
-@keyframes login__progress 
+@keyframes event__progress 
   0% 
     box-shadow: 0px 0px 0px $animation-progress--color
 
