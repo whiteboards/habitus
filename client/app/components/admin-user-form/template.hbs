@@ -1,0 +1,47 @@
+{{#form-card
+  class='is-one-half'
+  actionEvent=(action "saveUser" model.user)
+  model=model.user
+  title='Edit User'
+  primaryType='submit'
+  primaryText='Save'
+  secondaryAction=(action "cancel")
+  secondaryText='Cancel'
+  isInProgress=isInProgress}}
+  <label class="label title is-5">First Name</label>
+  <p class="control">
+    {{input class="input" type="text" name='title' value=model.user.firstName placeholder="Joe"}}
+  </p>
+  <label class="label title is-5">Last Name</label>
+  <p class="control">
+    {{input class="input" type="text" name='title' value=model.user.lastName placeholder="Smoe"}}
+  </p>
+  <label class="label title is-5">E-mail</label>
+  <p class="control">
+    {{input class="input" type="email" name='title' value=model.user.email placeholder="joe@smoe.com" required=true}}
+  </p>
+  <label class="label title is-5">Role</label>
+  <p class="control">
+    {{input class="input" type="email" name='title' value=roleId placeholder="1"}}
+<!--    
+    <span class="select">
+        <select value=roleId>
+      {{#with model.roles as |roles|}}
+          {{#each roles key="roleType" as |role|}}
+            {{#if (eq model.user.role.roleType role.roleType)}} 
+            <option value={{role.id}} selected>{{role.roleType}}</option>
+            {{else}}
+            <option value={{role.id}}>{{role.roleType}}</option>
+            {{/if}}
+          {{/each}}
+      {{/with}}
+        </select>
+    </span>-->
+  </p>
+  <label class="label title is-5">Display Name/username</label>
+  <p class="control">
+    {{input class="input" type="text" name='title' value=model.user.displayName placeholder="JoeSmoe"}}
+  </p>
+  
+  {{yield}}
+{{/form-card}}

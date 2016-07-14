@@ -7,5 +7,12 @@ export default Ember.Route.extend({
     if (model.get('alias') === 'index') {
       this.transitionTo('/');
     }
+  },
+  actions: {
+    saveComment(model) {
+      model.save().then(()=> {
+        console.log('we saved!')
+      })
+    }
   }
 });

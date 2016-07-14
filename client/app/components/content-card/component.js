@@ -14,5 +14,5 @@ export default Ember.Component.extend({
     if (!this.get('content.updatedAt')) { return '' }
     let myDate = this.get('content.updatedAt')
     return myDate.toDateString() + ', ' + myDate.toLocaleTimeString()
-  }),
+  })
 });

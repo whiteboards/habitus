@@ -1,4 +1,4 @@
-<div class="card {{extraClasses}} {{deleted}}">
+<div class="card {{if isFull "is-fullwidth" ""}} {{extraClasses}} {{deleted}}">
   <header class="card-header">
     <p class="card-header-title">
       {{title}}
@@ -17,9 +17,12 @@
       </ul>
       {{/if}}
       {{#if typeObject.displayName}}
-        {{#each typeObject}}
-          {{@key}}: {{this}}
-        {{/each}}
+      <ul>
+        <li>Display Name: {{typeObject.displayName}}</li>
+        {{#with typeObject.role as |role|}}
+        <li>User Role: {{role.roleType}}</li>
+        {{/with}}
+      </ul>
       {{/if}}
     </div>
   </div>

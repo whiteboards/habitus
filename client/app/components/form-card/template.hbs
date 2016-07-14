@@ -1,0 +1,26 @@
+<div class="card {{if isInProgress "loading--progress" ""}}">
+  <header class="card-header">
+    <p class="card-header-title title is-4">
+      {{title}}
+    </p>
+  </header>
+  <div class="card-content">
+    <div class="content">
+      <form {{action "actionEvent" model on='submit'}}>
+        {{yield}}
+      </form>
+    </div>
+  </div>
+  <footer class="card-footer">
+    {{#if primaryType}}
+      {{#unless isInProgress}}
+        <a {{action "actionEvent"}} class="card-footer-item is-primary "> {{primaryText}}</a>
+        {{/unless}}
+    {{/if}}
+    {{#if secondaryAction}}
+      <a {{action secondaryAction}} class="card-footer-item">{{secondaryText}}</a>
+    {{/if}}
+  </footer>
+</div>
+
+

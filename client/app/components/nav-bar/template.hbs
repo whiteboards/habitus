@@ -1,0 +1,59 @@
+{{yield}}
+<nav class="nav nav--top">
+  <div class="nav-left">
+    {{#link-to 'index' class="nav-item"}}
+      <img src='/logo5.svg' alt='Habitus logo'>
+    {{/link-to}}
+  </div>
+<!--
+  <div class="nav-center">
+    <a class="nav-item" href="#">
+      <span class="icon">
+        <i class="fa fa-github"></i>
+      </span>
+    </a>
+    <a class="nav-item" href="#">
+      <span class="icon">
+        <i class="fa fa-twitter"></i>
+      </span>
+    </a>
+  </div>
+-->
+  <span class="nav-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </span>
+
+  <div class="nav-right nav-menu">
+    {{#link-to 'index' class="nav-item"}}
+      Home
+    {{/link-to}}
+    {{#if session.isAuthenticated}}
+      {{#link-to 'admin' class="nav-item" activeClass='is-active'}}
+        Admin
+      {{/link-to}}
+      <a class="nav-item" {{action 'invalidateSession'}}>Logout</a>
+    {{else}}
+      {{#link-to 'login' class="nav-item"}}Login{{/link-to}}
+    {{/if}}
+    {{#link-to 'blog' class="nav-item"}}
+      Blog
+    {{/link-to}}
+
+    <span class="nav-item">
+      <a class="button" >
+        <span class="icon">
+          <i class="fa fa-twitter"></i>
+        </span>
+        <span>Tweet</span>
+      </a>
+      <a class="button is-primary" href="#">
+        <span class="icon">
+          <i class="fa fa-download"></i>
+        </span>
+        <span>Download</span>
+      </a>
+    </span>
+  </div>
+</nav>

@@ -1,1 +1,16 @@
 {{outlet}}
+{{#link-to 'admin.users.index' class="button is-info" activeClass='is-active'}}
+  Go back
+{{/link-to}}
+{{#admin-user-form model=model
+  saveUser='saveUser'
+  store=store}}
+  <label class="label title is-5">Password</label>
+  <p class="control">
+    {{input class="input" type="password" name='title' value=model.user.password placeholder="Enter password"}}
+  </p>
+  <label class="label title is-5">Confirm Password</label>
+  <p class="control">
+    {{input class="input" type="password" name='title' value=model.user.passwordConfirmation placeholder="Enter password"}}
+  </p>
+{{/admin-user-form}}

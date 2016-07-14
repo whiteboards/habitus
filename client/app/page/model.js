@@ -1,14 +1,14 @@
 import Model from 'ember-data/model';
 import attr from 'ember-data/attr';
-import { belongsTo, hasMany } from 'ember-data/relationships';
+import { hasMany } from 'ember-data/relationships';
 import marked from 'npm:marked'
 
 export default Model.extend({
   title: attr('string'),
   content: attr('string'),
-  userId: belongsTo('user'),
   insertedAt: attr('date'),
   updatedAt: attr('date'),
+  enableComments: attr(),
   comments: hasMany('comments'),
   tags: hasMany('tags'),
   alias: attr('string'),
