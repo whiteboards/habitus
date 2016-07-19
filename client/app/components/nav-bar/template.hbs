@@ -19,27 +19,32 @@
     </a>
   </div>
 -->
-  <span class="nav-toggle">
-    <span></span>
-    <span></span>
-    <span></span>
+  <span class="button is-info nav-toggle {{if isActive "is-active" ""}}" {{action "toggleMenu"}}>
+    Menu
   </span>
 
-  <div class="nav-right nav-menu">
-    {{#link-to 'index' class="nav-item"}}
-      Home
+  <div class="nav-menu nav-right {{if isActive "is-active" ""}}" {{action "toggleMenu"}}>
+    {{#with model as |pages|}}
+      {{#each pages as |page|}}
+      {{#if page.alias}}
+        {{#link-to 'page' page.alias class="nav-item" activeClass='is-active'}}
+          {{if (eq page.alias "index") "Home" page.title}}
+        {{/link-to}}
+      {{/if}}
+      {{/each}}
+    {{/with}}
+    {{#link-to 'blog' class="nav-item"}}
+      Blog
     {{/link-to}}
     {{#if session.isAuthenticated}}
       {{#link-to 'admin' class="nav-item" activeClass='is-active'}}
         Admin
       {{/link-to}}
+      <span class="nav-item">Welcome, {{session.currentUser.displayName}}</span>
       <a class="nav-item" {{action 'invalidateSession'}}>Logout</a>
     {{else}}
       {{#link-to 'login' class="nav-item"}}Login{{/link-to}}
     {{/if}}
-    {{#link-to 'blog' class="nav-item"}}
-      Blog
-    {{/link-to}}
 
     <span class="nav-item">
       <a class="button" >

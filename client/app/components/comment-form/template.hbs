@@ -1,10 +1,12 @@
 {{yield}}
-<form {{action "saveComment" model on='submit'}}>
-  <label class="label title is-4">Add comment</label>
-  <p class="control">
-    {{textarea class="textarea" type="text" name='title' value=model.comment placeholder="I really enjoyed this"}}
-  </p>
-  <p class="control">
-    <button class="button is-primary" {{action "saveComment" model}}>Submit</button>
-  </p>
-</form>
+{{#if authManager.isAuthenticated}}
+  <form {{action "saveComment" on='submit'}}>
+    <label class="label title is-4">Add comment</label>
+    <p class="control">
+      {{textarea class="textarea" type="text" name='title' value=comment placeholder="I really enjoyed this"}}
+    </p>
+    <p class="control">
+      <button class="button is-primary" {{action "saveComment"}}>Submit</button>
+    </p>
+  </form>
+{{/if}}

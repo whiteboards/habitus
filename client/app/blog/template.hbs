@@ -1,1 +1,20 @@
 {{outlet}}
+<h1 class='title is-1'>List of posts</h1>
+<div class="columns">
+  {{#each model as |blog|}}
+    {{#if post.content}}
+      {{#content-card class='column is-one-third'
+        isEmpty=false
+        isDeleted=post.isDeleted
+        isFull=true
+        title=post.title
+        content=post
+        extraClasses=''
+        }}
+        {{#link-to 'post' post.alias class="card-footer-item"}}View{{/link-to}}
+      {{/content-card}}
+    {{/if}}
+  {{else}}
+    <h2 class='title is-2'>Looks like there aren't any posts yet.</h2>
+  {{/each}}
+</div>

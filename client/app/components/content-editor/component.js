@@ -3,7 +3,8 @@ import marked from 'npm:marked'
 
 export default Ember.Component.extend({
   commentOptions: ['true', 'false'],
-  commentsEnabled: 'false',
+  commentsEnabled: '',
+  authManager: Ember.inject.service('session'),
   previewContent: Ember.computed('model.{content}', function () {
     if (this.get('model.content') === undefined) {return ''}
     return marked(this.get('model.content'))
@@ -20,17 +21,16 @@ export default Ember.Component.extend({
     }
   }),
   actions: {
-    enableComments(value) {
-      console.log('Should comments be enabled?:', value)
-      let model = this.get('model')
-      model.set('enableComments', value)
-      this.set('commentsEnabled', value)
-    },
     savePage(model) {
       // trigger action on parent component
-      console.log('setting comments to be:', this.get('commentsEnabled'))
-      model.set('enableComments', this.get('commentsEnabled'))
+      let comments = this.get('commentsEnabled')
+      console.log('setting comments to be:', comments)
+      if (comments === '') {
+        comments = 'true'
+      }
+      model.set('enableComments', comments)
       model.set('alias', this.get('alias'))
+      model.set('user', this.get('authManager').get('currentUser'))
       this.sendAction('savePage', model);
     },
   }

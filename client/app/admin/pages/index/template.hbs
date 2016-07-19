@@ -4,19 +4,20 @@
 {{/link-to}}</h1>
 <div class="columns">
   {{#each model as |page|}}
-    {{#content-card class='column is-one-third'
-      isEmpty=false
-      isDeleted=page.isDeleted
-      isFull=true
-      title=page.title
-      content=page
-      extraClasses=''
-      }}
-      {{#link-to 'page' page.alias class="card-footer-item"}}View{{/link-to}}
-      <a class="card-footer-item" {{action "editPage" page}}>Edit</a>
-      <a class="card-footer-item" {{action "deletePage" page}}>Delete</a>
-    {{/content-card}}
-    
+    {{#if page.content}}
+      {{#content-card class='column is-one-third'
+        isEmpty=false
+        isDeleted=page.isDeleted
+        isFull=true
+        title=page.title
+        content=page
+        extraClasses=''
+        }}
+        {{#link-to 'page' page.alias class="card-footer-item"}}View{{/link-to}}
+        <a class="card-footer-item" {{action "editPage" page}}>Edit</a>
+        <a class="card-footer-item" {{action "deletePage" page}}>Delete</a>
+      {{/content-card}}
+    {{/if}}
   {{else}}
     {{#content-card class='column is-fullwidth'
     isEmpty=true

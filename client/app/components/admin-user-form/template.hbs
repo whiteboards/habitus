@@ -22,21 +22,20 @@
   </p>
   <label class="label title is-5">Role</label>
   <p class="control">
-    {{input class="input" type="email" name='title' value=roleId placeholder="1"}}
-<!--    
+    
     <span class="select">
-        <select value=roleId>
+        {{#x-select value=roleId}}
       {{#with model.roles as |roles|}}
           {{#each roles key="roleType" as |role|}}
             {{#if (eq model.user.role.roleType role.roleType)}} 
-            <option value={{role.id}} selected>{{role.roleType}}</option>
+              {{#x-option value=role.id selected=true}}{{role.roleType}}{{/x-option}}
             {{else}}
-            <option value={{role.id}}>{{role.roleType}}</option>
+              {{#x-option value=role.id}}{{role.roleType}}{{/x-option}}
             {{/if}}
           {{/each}}
       {{/with}}
-        </select>
-    </span>-->
+        {{/x-select}}
+    </span>
   </p>
   <label class="label title is-5">Display Name/username</label>
   <p class="control">

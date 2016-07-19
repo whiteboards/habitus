@@ -6,6 +6,8 @@
 {{#each model.users as |user|}}
   {{#content-card
   isEmpty=false
+  isFull=true
+  isDeleted=user.isDeleted
   title=user.displayName
   class='column is-one-quarter'
   type='user'
@@ -19,6 +21,7 @@
 {{else}}
   {{#content-card
   isEmpty=true
+  isFull=true
   title='No Existing Users'
   ActionLink='admin.users.new'
   class='column is-fullwidth'}}

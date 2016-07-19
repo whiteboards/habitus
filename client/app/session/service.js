@@ -8,7 +8,8 @@ export default ESASession.extend({
 
   currentUser: Ember.computed('isAuthenticated', function() {
     if (this.get('isAuthenticated')) {
-      const promise = this.get('store').queryRecord('user', {});
+      let user_id = JSON.parse(localStorage['ember_simple_auth:session']).authenticated.id
+      const promise = this.get('store').findRecord('user', user_id)
       return DS.PromiseObject.create({ promise: promise });
     }
   })

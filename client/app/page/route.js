@@ -9,10 +9,6 @@ export default Ember.Route.extend({
     }
   },
   actions: {
-    saveComment(model) {
-      model.save().then(()=> {
-        console.log('we saved!')
-      })
-    }
+    
   }
 });

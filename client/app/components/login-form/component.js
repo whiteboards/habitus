@@ -8,8 +8,8 @@ export default Ember.Component.extend({
       let email = this.get('email');
       let password = this.get('password');
       this.set('isLoggingIn', 'login__card--progress')
-      this.get('session').authenticate('authenticator:oauth2', email, password).then(() =>{
-        console.log('auth completed')
+      this.get('session').authenticate('authenticator:oauth2', email, password).then((data) =>{
+        
         this.sendAction('transition');
       }).catch((reason) => {
         console.log('reason:', reason.error || reason)

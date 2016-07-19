@@ -5,7 +5,9 @@ export default Ember.Component.extend({
   actions: {
     deleteMe() {
       this.set('classes', 'animated fadeOut')
-      this.remove()
+      setTimeout(()=> {
+        this.remove()
+      }, 1500)
     } 
   }
 });

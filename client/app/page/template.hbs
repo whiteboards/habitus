@@ -1,11 +1,11 @@
 {{outlet}}
-<section>
+<section class='section'>
     <div class="container content">
       {{#with model as |page|}}
         {{{page.renderedContent}}}
         {{#if page.enableComments}}
           <hr/>
-          {{#comment-form}}{{/comment-form}}
+          {{#comment-form store=store page=page}}{{/comment-form}}
           {{#comment-container comments=page.comments}}{{/comment-container}}
         {{/if}}
       {{/with}}

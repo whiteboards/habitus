@@ -1,27 +1,28 @@
 
 <form {{action "savePage" model on='submit'}}>
-  <label class="label title is-4">Page Title</label>
+  <label class="label title is-4">{{if (eq type 'page') "Page" "Post"}} Title</label>
   <p class="control">
     {{input class="input" type="text" name='title' value=model.title placeholder="Index"}}
   </p>
-  <label class="label title is-4">Page Alias</label>
+  <label class="label title is-4">{{if (eq type 'page') "Page" "Post"}} Alias</label>
   <p class="control">
     {{input class="input" type="text" value=alias placeholder="alias" readonly=true}}
   </p>
   <label class="label">Enable comments?</label>
   <p class="control">
     <span class="select">
-      {{#power-select
-        selected=model.enableComments
-        options=commentOptions
-        onchange=(action "enableComments")
-        as |name|
-      }}
-        {{name}}
-      {{/power-select}}
+      {{#x-select value=commentsEnabled default='false'}}
+        {{#each commentOptions as |option|}}
+          {{#if (eq model.enableComments option)}} 
+            {{#x-option value=option selected=true}}{{option}}{{/x-option}}
+          {{else}}
+            {{#x-option value=option}}{{option}}{{/x-option}}
+          {{/if}}
+        {{/each}}
+      {{/x-select}}
     </span>
   </p>
-  <label class="label title is-4">Page content <small class=''>Accepts markdown content</small></label>
+  <label class="label title is-4">{{if (eq type 'page') "Page" "Post"}} content <small class=''>Accepts markdown content</small></label>
   <p class="control">
     {{textarea class="textarea" name='content' value=model.content placeholder="##Page Content"}}
   </p>
@@ -31,7 +32,7 @@
     </button>
   </p>
   <div class='content content-preview'>
-    <h1 class='title is-2'>Page Preview</h1>
+    <h1 class='title is-2'>{{if (eq type 'page') "Page" "Post"}} Preview</h1>
     <hr/>
     
     {{{previewContent}}}

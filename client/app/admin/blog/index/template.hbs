@@ -1,1 +1,31 @@
 {{outlet}}
+<h1 class='title is-1'>List of posts {{#link-to 'admin.blog.new' class="button is-primary"}}
+  Add New
+{{/link-to}}</h1>
+<div class="columns">
+  {{#each model as |blog|}}
+    {{#if post.content}}
+      {{#content-card class='column is-one-third'
+        isEmpty=false
+        isDeleted=post.isDeleted
+        isFull=true
+        title=post.title
+        content=post
+        extraClasses=''
+        }}
+        {{#link-to 'post' post.alias class="card-footer-item"}}View{{/link-to}}
+        <a class="card-footer-item" {{action "editPage" post}}>Edit</a>
+        <a class="card-footer-item" {{action "deletePage" post}}>Delete</a>
+      {{/content-card}}
+    {{/if}}
+  {{else}}
+    {{#content-card class='column is-fullwidth'
+    isEmpty=true
+    title='No Existing Pages'
+    isFull=true
+    extraClasses=''
+    actionLink='admin.blog.new'}}
+      <p>Since you don't have any existing posts, you'll need to create one to get started.</p>
+    {{/content-card}}  
+  {{/each}}
+</div>

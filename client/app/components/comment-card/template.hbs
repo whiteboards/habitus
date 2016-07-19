@@ -1,7 +1,7 @@
-<div class="card {{if isFull "is-fullwidth" ""}} {{extraClasses}} {{deleted}}">
+<div class="card card--comment {{if isFull "is-fullwidth" ""}} {{extraClasses}} {{deleted}}">
   <header class="card-header">
     <p class="card-header-title">
-      {{title}}
+      {{title}} - {{if updatedAt updatedAt "Very recently"}}
     </p>
   </header>
   <div class="card-content">

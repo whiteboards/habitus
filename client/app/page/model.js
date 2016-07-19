@@ -13,7 +13,6 @@ export default Model.extend({
   tags: hasMany('tags'),
   alias: attr('string'),
   renderedContent: Ember.computed('content', function () {
-    console.log('model:', this.get('content'))
     if (this.get('content') === undefined) {return ''}
     return marked(this.get('content'))
   }), 
