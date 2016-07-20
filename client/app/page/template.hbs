@@ -5,7 +5,7 @@
         {{{page.renderedContent}}}
         {{#if page.enableComments}}
           <hr/>
-          {{#comment-form store=store page=page}}{{/comment-form}}
+          {{#comment-form store=store type='page' model=page}}{{/comment-form}}
           {{#comment-container comments=page.comments}}{{/comment-container}}
         {{/if}}
       {{/with}}

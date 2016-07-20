@@ -1,0 +1,8 @@
+{{yield}}
+{{#each sortedPosts as |post|}}
+  {{#if post.content}}
+    {{#post-preview class='message' post=post}}{{/post-preview}}
+  {{/if}}
+{{else}}
+  <h3 class='title is-3'>Looks like there aren't any posts yet. Check back later!</h3>  
+{{/each}}

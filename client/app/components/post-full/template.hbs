@@ -1,0 +1,13 @@
+{{yield}}
+<section class='section'>
+  <div class='container content'>
+    <h1 class="title is-1">{{post.title}}<span class='subtitle'> Published - {{createdAt}} By {{post.user.displayName}}</span></h1>
+    <hr/>
+    {{{post.renderedContent}}}
+    {{#if post.enableComments}}
+    <hr/>
+    {{#comment-form store=store type='post' model=post}}{{/comment-form}}
+    {{#comment-container comments=post.comments}}{{/comment-container}}
+  {{/if}}
+  </div>
+</section>

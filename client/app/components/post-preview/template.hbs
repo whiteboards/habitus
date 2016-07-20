@@ -1,0 +1,9 @@
+{{yield}}
+<article class="message">
+  <div class="message-header">
+    {{#link-to 'blog.post' post.id}}{{post.title}} {{/link-to}} - Published on {{createdAt}}
+  </div>
+  <div class="message-body">
+    {{{post.renderedContent}}}
+  </div>
+</article>

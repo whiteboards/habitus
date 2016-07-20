@@ -14,18 +14,20 @@ Router.map(function() {
     });
     this.route('blog', function() {
       this.route('new');
-      this.route('edit');
+      this.route('edit', { path: 'edit/:post_id'});
     });
     this.route('users', function() {
       this.route('edit', { path: 'edit/:user_id'});
       this.route('new');
     });
   });
-  this.route('blog');
   this.route('login');
   this.route('install');
   this.route('loading');
   // this.route('error');
+  this.route('blog', function() {
+    this.route('post', { path: '/:post_alias' });
+  });
 });
 
 export default Router;

@@ -6,6 +6,7 @@ export default Ember.Route.extend({
   },
   actions: {
     savePage(model) {
+      console.log('saving model:', model)
       model.save().then(()=> {
         console.log('we saved!')
         this.transitionTo('admin.blog.index');

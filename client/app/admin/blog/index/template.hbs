@@ -3,7 +3,7 @@
   Add New
 {{/link-to}}</h1>
 <div class="columns">
-  {{#each model as |blog|}}
+  {{#each model as |post|}}
     {{#if post.content}}
       {{#content-card class='column is-one-third'
         isEmpty=false
@@ -13,7 +13,7 @@
         content=post
         extraClasses=''
         }}
-        {{#link-to 'post' post.alias class="card-footer-item"}}View{{/link-to}}
+        {{#link-to 'blog.post' post.alias class="card-footer-item"}}View{{/link-to}}
         <a class="card-footer-item" {{action "editPage" post}}>Edit</a>
         <a class="card-footer-item" {{action "deletePage" post}}>Delete</a>
       {{/content-card}}
@@ -21,7 +21,7 @@
   {{else}}
     {{#content-card class='column is-fullwidth'
     isEmpty=true
-    title='No Existing Pages'
+    title='No Existing Posts'
     isFull=true
     extraClasses=''
     actionLink='admin.blog.new'}}

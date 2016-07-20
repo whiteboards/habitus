@@ -8,5 +8,5 @@ export default Model.extend({
   updatedAt: attr('date'),
   user: belongsTo('user'),
   page: belongsTo('page'),
-  // post: belongsTo('post')
+  post: belongsTo('post')
 });
